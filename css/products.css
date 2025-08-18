@@ -40,3 +40,22 @@ body{
   flex-direction: column;
   justify-content: center;
 }
+
+.fw-bold {
+  font-weight: 700;
+  ma
+}
+
+.text-muted {
+  color: #6c757d !important;
+  font-size: medium;
+}
+
+.card-footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  padding: 10px;
+}
