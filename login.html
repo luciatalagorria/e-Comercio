@@ -9,9 +9,13 @@
   <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/login.css">
   <style>
     body {
-      background-color: rgb(248, 249, 250);
+      background-color: #f09200;
+      font-family: Anek Devanagari, sans-serif;
+
     }
   </style>
 </head>
@@ -22,9 +26,13 @@
 
         <!-- Icono -->
         <div class="login-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" role="img" aria-label="usuario">
-                <circle cx="12" cy="8" r="4"></circle>
-                <path d="M4 20a8 8 0 0 1 16 0"></path>
+
+            <svg viewBox="0 0 30 30" role="img" aria-label="usuario">
+                <circle cx="15" cy="10" r="4"></circle>
+                <path d="M7 22a8 8 0 1 1 16 0"></path>
+                <circle cx="15" cy="15" r="14" stroke="#f09200" stroke-width="2" fill="none"></circle>
+                
+
             </svg>
         </div>
 
@@ -32,23 +40,28 @@
          <h1 class="login-title">INICIAR SESIÓN</h1>
 
          <!-- Formulario -->
-          <form class="login-form" action="#" method="post" novalidate>
+
+          <form class="login-form" action="index.html" method="post" novalidate>
 
             <!-- Usuario -->
-            <div class="form-field">
-                <label for="email" class="field-label">USUARIO</label>
+            <div class="form-field" id="email-field">
+                <label for="email" class="field-label" id="usuario">USUARIO</label><br>
+
                 <input id="email" name="email" type="email" placeholder="Ingrese su email" autocomplete="username" required>
             </div>
 
             <!-- Contraseña -->
-             <div class="form-field">
-                <label for="password" class="field-label">CONTRASEÑA</label>
+
+             <div class="form-field" id="password-field">
+                <label for="password" class="field-label" id="contrasenia">CONTRASEÑA</label><br>
                 <input type="password" name="password" id="password" placeholder="********" autocomplete="current-password" required>
              </div>
 
-             <!-- Botón -->
-              <div class="form-actions">
-                <button type="submit" class="button-submit"><a href="products.html">INGRESAR</a></button>
+             <!-- Botón / tiene que modificarse con script así requiere de que se inicie sesión y no deje avanzar sin cuenta -->
+              
+             <div class="form-actions">
+                <button type="submit" class="button-submit">INGRESAR</button>
+
               </div>
           </form>
     </section>

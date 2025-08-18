@@ -1,0 +1,80 @@
+body{
+    background-color: #f09200;
+    font-family: Anek Devanagari, sans-serif;
+}
+
+
+.login-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 600px;
+    width: 500px;
+    background-color: #ffffff;
+    border-radius: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 150px;
+}
+
+.login-icon {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto;
+    display: block;
+    fill: #f09200;
+}
+
+.login-title {
+    text-align: center;
+    font-size: 2.5rem;
+    color: #5D96CF;
+    margin-bottom: 20px;
+    font-weight: bolder;
+}
+
+#email, #password {
+    width: 425px;
+    padding: 10px;
+    margin: 10px 0;
+    background-color: white;
+    border: 2px solid #5D96CF;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.form-actions {
+    width: 40%;
+    padding: 10px;
+    background-color: #ffffff;
+    color: #ffffff;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-left: 45px;
+    margin-right: auto;
+}
+
+.button-submit {
+    width: 200px;
+    padding: 10px;
+    background-color: #5D96CF;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    font-weight: bolder;
+    align-items: center;
+
+}
+
+.button-submit:hover {
+    background-color: #4A7FBF;
+}
+
+#usuario, #contrasenia{
+    font-weight: bolder;
+    color: #f09200;
+}
