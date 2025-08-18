@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>eMercado - Todo lo que busques está aquí</title>
+  
+  <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/styles.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/login.css">
+  <style>
+    body {
+      background-color: #f09200;
+      font-family: Anek Devanagari, sans-serif;
+    }
+  </style>
+</head>
+
+<body>
+
+    <section class="login-container" aria-label="Formulario de acceso">
+
+        <!-- Icono -->
+        <div class="login-icon" aria-hidden="true">
+            <svg viewBox="0 0 30 30" role="img" aria-label="usuario">
+                <circle cx="15" cy="10" r="4"></circle>
+                <path d="M7 22a8 8 0 1 1 16 0"></path>
+                <circle cx="15" cy="15" r="14" stroke="#f09200" stroke-width="2" fill="none"></circle>
+                
+            </svg>
+        </div>
+
+        <!-- Título -->
+         <h1 class="login-title">INICIAR SESIÓN</h1>
+
+         <!-- Formulario -->
+          <form class="login-form" action="index.html" method="post" novalidate>
+
+            <!-- Usuario -->
+            <div class="form-field" id="email-field">
+                <label for="email" class="field-label" id="usuario">USUARIO</label><br>
+                <input id="email" name="email" type="email" placeholder="Ingrese su email" autocomplete="username" required>
+            </div>
+
+            <!-- Contraseña -->
+             <div class="form-field" id="password-field">
+                <label for="password" class="field-label" id="contrasenia">CONTRASEÑA</label><br>
+                <input type="password" name="password" id="password" placeholder="********" autocomplete="current-password" required>
+             </div>
+
+             <!-- Botón / tiene que modificarse con script así requiere de que se inicie sesión y no deje avanzar sin cuenta -->
+              
+             <div class="form-actions">
+                <button type="submit" class="button-submit">INGRESAR</button>
+              </div>
+          </form>
+    </section>
+
+  <footer class="text-muted">
+    <div class="container">
+      <p class="float-end">
+        <a href="#">Volver arriba</a>
+      </p>
+      <p>Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a></p>
+    </div>
+  </footer>
+  <script src="js/login.js"></script>
+</body>
+
+</html>
