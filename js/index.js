@@ -11,5 +11,9 @@ document.addEventListener("DOMContentLoaded", function(){
         localStorage.setItem("catID", 103);
         window.location = "products.html"
     });
-    window.location.href = "login.html"
+    
+     const usuario = localStorage.getItem("usuario");
+    if (!usuario) {
+      window.location.href = "login.html";
+    } 
 });
