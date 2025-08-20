@@ -27,7 +27,7 @@ body{
 }
 
 .card-img-top {
-  width: 200px;
+  width: 350px;
   height: 100%;
   object-fit: cover;
   border-radius: 15px;
@@ -35,7 +35,7 @@ body{
 
 .card-body {
   flex: 1;
-  padding: 25px 30px;
+  padding: 80px 40px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -43,7 +43,7 @@ body{
 
 .fw-bold {
   font-weight: 700;
-  ma
+  color: #5D96CF;
 }
 
 .text-muted {
@@ -58,4 +58,13 @@ body{
   justify-content: center;
   gap: 5px;
   padding: 10px;
+}
+
+.card-title {
+ color: #5D96CF;
+ text-align: center;
+}
+
+.card-text {
+text-align: center;
 }
