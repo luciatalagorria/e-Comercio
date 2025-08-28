@@ -3,6 +3,7 @@ body{
     font-family: Anek Devanagari, sans-serif;
 }
 
+/* id del div donde se encuentran los productos */
 #productos {
   display: flex;
   flex-direction: column;  
@@ -12,6 +13,7 @@ body{
   margin: 20px auto;
 }
 
+/* class del div que contiene cada producto */
 .card {
   display: flex;
   flex-direction: row;
@@ -26,6 +28,7 @@ body{
 
 }
 
+/* class de la imagen del producto */
 .card-img-top {
   width: 350px;
   height: 100%;
@@ -33,6 +36,7 @@ body{
   border-radius: 15px;
 }
 
+/* Parte blanca de la etiqueta del producto */
 .card-body {
   flex: 1;
   padding: 80px 40px;
@@ -41,16 +45,19 @@ body{
   justify-content: center;
 }
 
+/* precio del producto */
 .fw-bold {
   font-weight: 700;
   color: #5D96CF;
 }
 
+/* cantidad de vendidos */
 .text-muted {
   color: #6c757d !important;
   font-size: medium;
 }
 
+/* donde se encuentran el precio y la cantidad de vendidos */
 .card-footer {
   display: flex;
   flex-direction: column;
@@ -60,11 +67,74 @@ body{
   padding: 10px;
 }
 
+/* nombre del producto */
 .card-title {
  color: #5D96CF;
  text-align: center;
 }
 
+/* descripcion del producto */
 .card-text {
 text-align: center;
+}
+
+
+@media (max-width: 768px) {
+  #productos {
+    max-width: 100%;
+    margin: 10px;
+  }
+
+  .card {
+    flex-direction: row;
+    height: auto;
+  }
+
+  .card-img-top {
+    width: 30%;
+    height: auto;
+    border-radius: 15px 15px 0 0;
+  }
+
+  .card-body {
+    padding: 20px;
+    text-align: center;
+  }
+
+  .card-footer {
+    flex-direction: row;
+    gap: 10px;
+    width: 20%;
+  }
+}
+
+
+@media (max-width: 320px) {
+ 
+  body{
+    font-size-adjust: xx-small;
+  }
+
+  .card {
+    flex-direction: column;
+    width: 100%;
+    height: 30px;
+  }
+
+  .card-img-top {
+    width: 100%;
+    height: auto;
+    border-radius: 15px 15px 0 0;
+  }
+
+  .card-body {
+    padding: 5px;
+    text-align: center;
+  }
+
+  .card-footer {
+    flex-direction: column;
+    gap: 5px;
+    width: 100%;
+  }
 }
