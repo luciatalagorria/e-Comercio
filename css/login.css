@@ -78,3 +78,33 @@ body{
     font-weight: bolder;
     color: #f09200;
 }
+
+@media (max-width: 320px ) {
+    .login-container {
+        align-items: center;
+        height: 400px;
+        width: 280px;
+    }
+
+    .login-icon {
+        width: 70px;
+        height: 70px;
+    }
+
+    .login-title {
+        font-size: 1.5rem;
+    }
+
+    #email, #password {
+        width: 240px;
+    }
+
+    .form-actions {
+        align-items: center;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+  
+    
+}
