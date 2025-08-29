@@ -31,7 +31,7 @@ body{
 /* class de la imagen del producto */
 .card-img-top {
   width: 350px;
-  height: 100%;
+  height: auto;
   object-fit: cover;
   border-radius: 15px;
 }
