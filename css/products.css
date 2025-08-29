@@ -79,7 +79,7 @@ text-align: center;
 }
 
 
-@media (max-width: 768px) {
+@media (max-width: 770px) {
   #productos {
     max-width: 100%;
     margin: 10px;
