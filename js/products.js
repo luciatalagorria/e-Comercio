@@ -1,7 +1,10 @@
  
+ const categoria = localStorage.getItem("catID");
+
     const contenedor = document.getElementById("productos");
 
-  fetch("https://japceibal.github.io/emercado-api/cats_products/101.json")
+
+  fetch(`https://japceibal.github.io/emercado-api/cats_products/${categoria}.json`)
     .then(response => response.json())
     .then(data => {
       data.products.forEach(product => {
