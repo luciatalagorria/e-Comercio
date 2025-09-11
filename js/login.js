@@ -17,6 +17,8 @@ document.addEventListener("DOMContentLoaded", () => { //evento que se dispara cu
     // Redirige a la portada
     window.location.href = "index.html";
   });
+
+  
 });
 
 

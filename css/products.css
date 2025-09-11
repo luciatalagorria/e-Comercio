@@ -1,6 +1,11 @@
 body{
-    background-color: #f09200;
+    background-color: #f8f9fa;
     font-family: Anek Devanagari, sans-serif;
+}
+
+h2 {
+  color: #f19305;
+  font-weight: 700;
 }
 
 /* id del div donde se encuentran los productos */
