@@ -10,6 +10,7 @@
   <link href="css/font-awesome.min.css" rel="stylesheet">
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
+  <link href="css/product-info.css" rel="stylesheet">
 </head>
 
 <body>
@@ -51,13 +52,46 @@
     </div>
   </nav>
 
-  <main>
-    <div class="container">
-      <div class="alert alert-danger text-center" role="alert">
-        <h4 class="alert-heading">Funcionalidad en desarrollo</h4>
+<main>
+  <div class="container my-5">
+
+    <!-- Pantalla de detalle de producto -->
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+
+        <!-- Nombre del producto -->
+        <h2 id="nombreProducto" class="mb-3"></h2>
+
+        <!-- Categoría -->
+        <span id="categoriaProducto" class="badge bg-primary mb-3"></span>
+
+        <!-- Carousel de imágenes -->
+        <div id="carouselProducto" class="carousel slide mb-4" data-bs-ride="carousel">
+          <div class="carousel-inner" id="imagenesProducto">
+            <!-- Las imágenes se llenarán con JavaScript -->
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselProducto" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselProducto" data-bs-slide="next">
+            <span class="carousel-control-next-icon"></span>
+          </button>
+        </div>
+
+        <!-- Descripción -->
+        <p id="descripcionProducto" class="lead"></p>
+
+        <!-- Cantidad vendidos -->
+        <p class="text-muted">
+          <strong>Vendidos:</strong> <span id="vendidosProducto"></span>
+        </p>
+
       </div>
     </div>
-  </main>
+
+  </div>
+</main>
+
   <footer class="text-muted">
     <div class="container">
       <p class="float-end">
