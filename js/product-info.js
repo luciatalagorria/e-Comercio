@@ -60,3 +60,16 @@ if (!productoId || !categoria) {
       nombreEl.textContent = "Error al cargar el producto";
     });
 }
+
+// Función para renderizar estrellas
+function getStars(score) {
+  let stars = '';
+  for (let i = 1; i <= 5; i++) {
+    if (i <= score) {
+      stars += '<i class="fa-solid fa-star text-warning"></i>'; // estrella llena
+    } else {
+      stars += '<i class="fa-regular fa-star text-warning"></i>'; // estrella vacía
+    }
+  }
+  return stars;
+}
