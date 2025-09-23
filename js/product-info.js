@@ -60,3 +60,32 @@ if (!productoId || !categoria) {
       nombreEl.textContent = "Error al cargar el producto";
     });
 }
+
+
+// Productos relacionados
+fetch("https://japceibal.github.io/emercado-api/products/50921.json")
+  .then(response => response.json())
+  .then(data => {
+    mostrarProducto(data);
+
+    let relacionados = data.relatedProducts;
+    let contenedor = document.getElementById("related-products");
+
+    relacionados.forEach(rel => {
+      contenedor.innerHTML += `
+        <div class="col">
+          <div class="card h-100 shadow-sm" style="cursor: pointer;" onclick="verProducto(${rel.id})">
+            <img src="${rel.image}" class="card-img-top" alt="${rel.name}">
+            <div class="card-body p-2">
+              <h6 class="card-title mb-0 text-center">${rel.name}</h6>
+            </div>
+          </div>
+        </div>
+      `;
+    });
+  });
+
+function verProducto(id) {
+  localStorage.setItem("prodID", id);
+  window.location = "product-info.html";
+}
