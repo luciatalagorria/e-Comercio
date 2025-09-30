@@ -1,45 +1,38 @@
 body {
     background-color: #f8f9fa;
-    font-family: Anek Devanagari, sans-serif;
+    font-family: 'Anek Devanagari', sans-serif;
+    margin: 0;
+    padding: 0;
 }
 
 h2 {
-  color: #f19305;
-  font-weight: 700;
-  font-size: 30px;
+    color: #f19305;
+    font-weight: 700;
+    font-size: 30px;
 }
 
+/* Contenedor principal del producto y relacionados */
+#productoContainer {
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+/* Carousel del producto */
 #carouselProducto {
     width: 600px;
+    transition: transform 0.2s, box-shadow 0.2s;
 }
 
 #carouselProducto:hover {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     transform: scale(1.02);
-    transition: transform 0.2s, box-shadow 0.2s;
 }
 
+/* Imagen dentro del carousel */
 #imagenesProducto {
     border-radius: 15px;
 }
 
-#productosRelacionados .card {
-  width: 100%;         /* Que ocupe todo el ancho del contenedor */
-  min-height: auto;    /* Ajusta según el contenido */
-}
-
-#productosRelacionados .card img {
-  width: 100%;       /* Ocupa todo el ancho de la card */
-  height: auto;      /* Mantiene la proporción */
-  object-fit: contain; /* Evita recorte */
-  border-radius: 8px; /* Opcional: bordes redondeados */
-}
-
-
-#productosRelacionados .card:hover {
-  transform: scale(1.03);
-}
-
-#productosRelacionados .card-body {
-  padding: 1.5rem; /* más espacio dentro de la card */
-}
