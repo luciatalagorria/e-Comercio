@@ -23,3 +23,23 @@ h2 {
     border-radius: 15px;
 }
 
+#productosRelacionados .card {
+  width: 100%;         /* Que ocupe todo el ancho del contenedor */
+  min-height: auto;    /* Ajusta según el contenido */
+}
+
+#productosRelacionados .card img {
+  width: 100%;       /* Ocupa todo el ancho de la card */
+  height: auto;      /* Mantiene la proporción */
+  object-fit: contain; /* Evita recorte */
+  border-radius: 8px; /* Opcional: bordes redondeados */
+}
+
+
+#productosRelacionados .card:hover {
+  transform: scale(1.03);
+}
+
+#productosRelacionados .card-body {
+  padding: 1.5rem; /* más espacio dentro de la card */
+}
