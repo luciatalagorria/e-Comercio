@@ -55,40 +55,28 @@
 
 <main>
   <div class="container my-5">
-
-    <!-- Pantalla de detalle de producto -->
     <div class="row justify-content-center">
-      <div class="col-md-8">
-
-        <!-- Nombre del producto -->
+      <!-- Columna del producto -->
+      <div class="col-md-8 col-lg-8">
         <h2 id="nombreProducto" class="mb-3"></h2>
-
-        <!-- Categoría -->
         <span id="categoriaProducto" class="badge bg-primary mb-3"></span>
 
-        <!-- Carousel de imágenes -->
         <div id="carouselProducto" class="carousel slide mb-4" data-bs-ride="carousel">
-          <div class="carousel-inner" id="imagenesProducto">
-            <!-- Las imágenes se llenarán con JavaScript -->
-          </div>
-          <button class="carousel-control-prev" type="button" data-bs-target="#carouselProducto" data-bs-slide="prev">
+          <div class="carousel-inner" id="imagenesProducto"></div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselProducto"
+            data-bs-slide="prev">
             <span class="carousel-control-prev-icon"></span>
           </button>
-          <button class="carousel-control-next" type="button" data-bs-target="#carouselProducto" data-bs-slide="next">
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselProducto"
+            data-bs-slide="next">
             <span class="carousel-control-next-icon"></span>
           </button>
         </div>
 
-        <!-- Descripción -->
         <p id="descripcionProducto" class="lead"></p>
-
-        <!-- Cantidad vendidos -->
-        <p class="text-muted">
-          <strong>Vendidos:</strong> <span id="vendidosProducto"></span>
-        </p>
-
+        <p class="text-muted"><strong>Vendidos:</strong> <span id="vendidosProducto"></span></p>
       </div>
-    </div>
+
 
   </div>
         <!-- Columna derecha: productos relacionados -->
@@ -98,9 +86,19 @@
             <!-- Aquí se insertan dinámicamente -->
           </div>
         </div>
+
+      <!-- Columna de productos relacionados -->
+      <div class="col-md-4 col-lg-4">
+        <section>
+          <h3>Productos relacionados</h3>
+          <div id="productosRelacionados" class="d-flex flex-column gap-3"></div>
+        </section>
+
       </div>
     </div>
-  </main>
+  </div>
+</main>
+
   <!-- Sección de Calificaciones -->
   <div class="container mt-4">
     <h3 id="titulo-comentarios">Calificaciones</h3>
