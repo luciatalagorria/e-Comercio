@@ -95,7 +95,7 @@ h2 {
     }
 }
 
-#titulo-comentarios {
+#tituloComentarios {
     color: #f19305;
     font-weight: 700;
     font-size: 30px;
@@ -116,4 +116,11 @@ h2 {
     cursor: pointer;
     transition: transform 0.2s, box-shadow 0.2s;
     
+}
+
+#dejaTuCalificacion {
+    color: #f19305;
+    font-weight: 700;
+    font-size: 24px;
+    margin-bottom: 20px;
 }
