@@ -54,6 +54,7 @@ function cargarProducto(id, cat) {
       console.error("Error al cargar el producto:", error);
       nombreEl.textContent = "Error al cargar el producto";
     });
+
 }
 
 
@@ -87,41 +88,3 @@ fetch(`https://japceibal.github.io/emercado-api/products_comments/${productoId}.
     });
   })
   .catch(error => console.error("Error al cargar los comentarios:", error));
-=======
-// Función para renderizar productos relacionados
-function renderRelacionados(productoActual, todosProductos) {
-  relacionadosEl.innerHTML = "";
-
-  // Tomamos hasta 4 productos diferentes al actual
-  const relacionados = todosProductos.filter(p => p.id !== productoActual.id).slice(0, 4);
-
-  relacionados.forEach(p => {
-    const card = document.createElement("div");
-    card.className = "card";
-    card.style.width = "10rem";
-    card.style.cursor = "pointer";
-
-    card.innerHTML = `
-      <img src="${p.image || p.images?.[0] || 'img/no-image.png'}" class="card-img-top" alt="${p.name}">
-      <div class="card-body p-2">
-        <p class="card-title small">${p.name}</p>
-      </div>
-    `;
-
-    card.addEventListener("click", () => {
-      // Actualizar variables y recargar contenido sin recargar la página
-      productoId = p.id;
-      categoria = p.category || categoria;
-      cargarProducto(productoId, categoria);
-      // Reiniciar carousel a primera imagen
-      const carousel = bootstrap.Carousel.getInstance(document.getElementById("carouselProducto"));
-      if (carousel) carousel.to(0);
-    });
-
-    relacionadosEl.appendChild(card);
-  });
-}
-
-// Inicializar la página
-cargarProducto(productoId, categoria);
-
