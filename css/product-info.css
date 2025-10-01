@@ -83,5 +83,38 @@ h2 {
         text-align: center;
     }
 
+
+    #productosRelacionados {
+        flex-direction: row;
+        overflow-x: auto;
+        gap: 10px;
+    }
+
+    #productosRelacionados .producto {
+        flex: 0 0 auto;
+    }
+}
+
+#titulo-comentarios {
+    color: #f19305;
+    font-weight: 700;
+    font-size: 30px;
+    margin-bottom: 50px;
+}
+
+#titulo-productosRelacionados {
+    color: #f19305;
+    font-weight: 700;
+    font-size: 30px;
+    margin-bottom: 50px;
+}
+
+#related-products .producto {
+    color: #5D96CF;
+    text-align: center;
+    background-color: #fff;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
     
+
 }
