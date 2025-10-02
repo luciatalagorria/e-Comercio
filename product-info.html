@@ -48,47 +48,37 @@
     </div>
   </nav>
 
-  <main>
-  <div class="container my-5">
-    <div class="row justify-content-center">
-      <!-- Columna del producto -->
-      <div class="col-md-8 col-lg-8">
-        <h2 id="nombreProducto" class="mb-3"></h2>
-        <span id="categoriaProducto" class="badge bg-primary mb-3"></span>
+  <main class="container my-5">
+  <div class="row">
+    <!-- Columna del producto principal -->
+    <div class="col-md-8 col-lg-8">
+      <h2 id="nombreProducto" class="mb-3"></h2>
+      <span id="categoriaProducto" class="badge bg-primary mb-3"></span>
 
-        <div id="carouselProducto" class="carousel slide mb-4" data-bs-ride="carousel">
-          <div class="carousel-inner" id="imagenesProducto"></div>
-          <button class="carousel-control-prev" type="button" data-bs-target="#carouselProducto"
-            data-bs-slide="prev">
-            <span class="carousel-control-prev-icon"></span>
-          </button>
-          <button class="carousel-control-next" type="button" data-bs-target="#carouselProducto"
-            data-bs-slide="next">
-            <span class="carousel-control-next-icon"></span>
-          </button>
-        </div>
-
-        <p id="descripcionProducto" class="lead"></p>
-
-        <!-- Cantidad vendidos -->
-        <p class="text-muted">
-          <strong>Vendidos:</strong> <span id="vendidosProducto"></span>
-        </p>
-
+      <div id="carouselProducto" class="carousel slide mb-4" data-bs-ride="carousel">
+        <div class="carousel-inner" id="imagenesProducto"></div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselProducto" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselProducto" data-bs-slide="next">
+          <span class="carousel-control-next-icon"></span>
+        </button>
       </div>
+
+      <p id="descripcionProducto" class="lead"></p>
+      <p class="text-muted"><strong>Vendidos:</strong> <span id="vendidosProducto"></span></p>
     </div>
 
+    <!-- Columna de productos relacionados -->
+    <div class="col-md-4 col-lg-4">
+      <h3 id="titulo-productosRelacionados">Productos relacionados</h3>
+      <div id="productosRelacionados" class="d-flex flex-column gap-3">
+        <!-- Aquí se insertan dinámicamente -->
+      </div>
+    </div>
   </div>
-        <!-- Columna derecha: productos relacionados -->
-        <div class="col-md-4">
-          <h3>Productos relacionados</h3>
-          <div id="related-products" class="row row-cols-1 g-3">
-            <!-- Aquí se insertan dinámicamente -->
-          </div>
-        </div>
-      </div>
-    </div>
-  </main>
+</main>
+
   <!-- Sección de Calificaciones -->
   <div class="container mt-4">
     <h3>Calificaciones</h3>

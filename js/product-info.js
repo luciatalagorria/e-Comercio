@@ -13,7 +13,7 @@ const relacionadosEl = document.getElementById("productosRelacionados");
 
 // Función principal para cargar producto
 function cargarProducto(id, cat) {
-  const apiUrl = https://japceibal.github.io/emercado-api/cats_products/${cat}.json;
+  const apiUrl = `https://japceibal.github.io/emercado-api/cats_products/${cat}.json`;
 
   fetch(apiUrl)
     .then(res => {
@@ -39,8 +39,8 @@ function cargarProducto(id, cat) {
       if (imagenes.length > 0) {
         imagenes.forEach((img, index) => {
           const div = document.createElement("div");
-          div.className = carousel-item ${index === 0 ? "active" : ""};
-          div.innerHTML = <img src="${img}" class="d-block w-100" alt="Imagen ${index + 1}">;
+          div.className = `carousel-item ${index === 0 ? "active" : ""}`;
+          div.innerHTML = `<img src="${img}" class="d-block w-100" alt="Imagen ${index + 1}">`;
           imagenesEl.appendChild(div);
         });
       } else {
@@ -140,7 +140,7 @@ function getStars(score) {
 
 const contenedorComentarios = document.getElementById("product-comments");
 
-fetch(https://japceibal.github.io/emercado-api/products_comments/${productoId}.json)
+fetch(`https://japceibal.github.io/emercado-api/products_comments/${productoId}.json`)
   .then(res => res.json())
   .then(data => { 
     data.forEach(comment => {
@@ -154,4 +154,4 @@ fetch(https://japceibal.github.io/emercado-api/products_comments/${productoId}.j
       contenedorComentarios.appendChild(comentario);
     });
   })
-  .catch(error => console.error("Error al cargar los comentarios:", error));
+  .catch(error => console.error("Error al cargar los comentarios:", error));
