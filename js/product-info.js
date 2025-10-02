@@ -60,7 +60,6 @@ function cargarProducto(id, cat) {
 function renderRelacionados(productoActual, todosProductos) {
   relacionadosEl.innerHTML = "";
 
-  // Tomamos hasta 4 productos diferentes al actual
   const relacionados = todosProductos.filter(p => p.id !== productoActual.id).slice(0, 4);
 
   relacionados.forEach(p => {
@@ -77,10 +76,10 @@ function renderRelacionados(productoActual, todosProductos) {
     `;
 
     card.addEventListener("click", () => {
-      // Actualizar variables y recargar contenido sin recargar la página
       productoId = p.id;
       categoria = p.category || categoria;
       cargarProducto(productoId, categoria);
+
       // Reiniciar carousel a primera imagen
       const carousel = bootstrap.Carousel.getInstance(document.getElementById("carouselProducto"));
       if (carousel) carousel.to(0);
@@ -93,17 +92,50 @@ function renderRelacionados(productoActual, todosProductos) {
 // Inicializar la página
 cargarProducto(productoId, categoria);
 
-// Función para renderizar estrellas
+//////////////////////////////////////////
+// ⭐⭐⭐ Lógica de las estrellas de calificación ⭐⭐⭐
+const stars = document.querySelectorAll("#rating-stars i");
+let selectedRating = 0; // Calificación guardada
+
+function highlightStars(rating) {
+  stars.forEach((star, index) => {
+    if (index < rating) {
+      star.classList.remove("fa-regular");
+      star.classList.add("fa-solid"); // Llena la estrella
+    } else {
+      star.classList.remove("fa-solid");
+      star.classList.add("fa-regular"); // Vacía la estrella
+    }
+  });
+}
+
+stars.forEach((star, index) => {
+  const ratingValue = index + 1;
+
+  star.addEventListener("mouseover", () => highlightStars(ratingValue));
+  star.addEventListener("mouseout", () => highlightStars(selectedRating));
+  star.addEventListener("click", () => {
+    selectedRating = ratingValue;
+    highlightStars(selectedRating);
+    console.log("Calificación seleccionada:", selectedRating);
+  });
+});
+
+// Mostrar todo vacío al inicio
+highlightStars(0);
+
+//////////////////////////////////////////
+// Función para renderizar estrellas en comentarios
 function getStars(score) {
-  let stars = '';
+  let starsHTML = '';
   for (let i = 1; i <= 5; i++) {
     if (i <= score) {
-      stars += '<i class="fa-solid fa-star text-warning"></i>'; // estrella llena
+      starsHTML += '<i class="fa-solid fa-star text-warning"></i>'; // estrella llena
     } else {
-      stars += '<i class="fa-regular fa-star text-warning"></i>'; // estrella vacía
+      starsHTML += '<i class="fa-regular fa-star text-warning"></i>'; // estrella vacía
     }
   }
-  return stars;
+  return starsHTML;
 }
 
 const contenedorComentarios = document.getElementById("product-comments");
