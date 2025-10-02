@@ -60,3 +60,45 @@ if (!productoId || !categoria) {
       nombreEl.textContent = "Error al cargar el producto";
     });
 }
+
+// ⭐⭐⭐ Lógica de las estrellas de calificación ⭐⭐⭐
+const stars = document.querySelectorAll("#rating-stars i");
+let selectedRating = 0; // Calificación guardada
+
+// Función para "pintar" estrellas
+function highlightStars(rating) {
+  stars.forEach((star, index) => {
+    if (index < rating) {
+      star.classList.remove("fa-regular");
+      star.classList.add("fa-solid"); // Llena la estrella
+    } else {
+      star.classList.remove("fa-solid");
+      star.classList.add("fa-regular"); // Vacía la estrella
+    }
+  });
+}
+
+// Eventos para cada estrella
+stars.forEach((star, index) => {
+  const ratingValue = index + 1;
+
+  // Hover → mostrar llenado hasta esa estrella
+  star.addEventListener("mouseover", () => {
+    highlightStars(ratingValue);
+  });
+
+  // Salir con mouse → volver al estado guardado
+  star.addEventListener("mouseout", () => {
+    highlightStars(selectedRating);
+  });
+
+  // Click → guardar la selección
+  star.addEventListener("click", () => {
+    selectedRating = ratingValue;
+    highlightStars(selectedRating);
+    console.log("Calificación seleccionada:", selectedRating);
+  });
+});
+
+// Al cargar, mostrar todo vacío
+highlightStars(0);
