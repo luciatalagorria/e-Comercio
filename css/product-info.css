@@ -55,17 +55,25 @@ h2 {
 }
 
 /* Productos relacionados */
-#productosRelacionados .card {
-  transition: transform 0.2s;
-  width: 100%;
+#productosRelacionados {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
 }
 
-#productosRelacionados .card:hover {
-  transform: scale(1.03);
+#productosRelacionados .producto {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
 }
 
-
-
+#productosRelacionados .producto:hover {
+    transform: scale(1.03);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
 
 /* Responsivo */
 @media screen and (max-width: 1024px) {
@@ -83,7 +91,6 @@ h2 {
         text-align: center;
     }
 
-
     #productosRelacionados {
         flex-direction: row;
         overflow-x: auto;
@@ -93,34 +100,4 @@ h2 {
     #productosRelacionados .producto {
         flex: 0 0 auto;
     }
-}
-
-#tituloComentarios {
-    color: #f19305;
-    font-weight: 700;
-    font-size: 30px;
-    margin-bottom: 50px;
-}
-
-#titulo-productosRelacionados {
-    color: #f19305;
-    font-weight: 700;
-    font-size: 30px;
-    margin-bottom: 50px;
-}
-
-#related-products .producto {
-    color: #5D96CF;
-    text-align: center;
-    background-color: #fff;
-    cursor: pointer;
-    transition: transform 0.2s, box-shadow 0.2s;
-    
-}
-
-#dejaTuCalificacion {
-    color: #f19305;
-    font-weight: 700;
-    font-size: 24px;
-    margin-bottom: 20px;
 }
