@@ -12,7 +12,6 @@
   <link href="css/styles.css" rel="stylesheet">
   <link href="css/product-info.css" rel="stylesheet">
   <script src="https://kit.fontawesome.com/dd26e005fc.js" crossorigin="anonymous"></script>
-</head>
 
 <body>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-1">
@@ -70,21 +69,56 @@
         </div>
 
         <p id="descripcionProducto" class="lead"></p>
-        <p class="text-muted"><strong>Vendidos:</strong> <span id="vendidosProducto"></span></p>
-      </div>
 
-      <!-- Columna de productos relacionados -->
-      <div class="col-md-4 col-lg-4">
-        <section>
-          <h3>Productos relacionados</h3>
-          <div id="productosRelacionados" class="d-flex flex-column gap-3"></div>
-        </section>
+        <!-- Cantidad vendidos -->
+        <p class="text-muted">
+          <strong>Vendidos:</strong> <span id="vendidosProducto"></span>
+        </p>
+
       </div>
     </div>
 
   </div>
-</main>
+        <!-- Columna derecha: productos relacionados -->
+        <div class="col-md-4">
+          <h3>Productos relacionados</h3>
+          <div id="related-products" class="row row-cols-1 g-3">
+            <!-- Aquí se insertan dinámicamente -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  <!-- Sección de Calificaciones -->
+  <div class="container mt-4">
+    <h3>Calificaciones</h3>
+    <div id="product-comments" class="list-group">
+      <!-- Aquí se insertan los comentarios desde JS -->
+    </div>
+  </div>
 
+  <!-- Formulario de Nueva Calificación -->
+  <div class="container mt-4">
+    <h4>Deja tu calificación</h4>
+    <form id="rating-form">
+      <div class="mb-3">
+        <label for="rating-text" class="form-label">Comentario:</label>
+        <textarea id="rating-text" class="form-control" rows="3"
+          placeholder="Escribe tu comentario..."></textarea>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Calificación:</label>
+        <div id="rating-stars" class="d-flex gap-1 fs-4 text-warning">
+          <i class="fa-regular fa-star" data-value="1"></i>
+          <i class="fa-regular fa-star" data-value="2"></i>
+          <i class="fa-regular fa-star" data-value="3"></i>
+          <i class="fa-regular fa-star" data-value="4"></i>
+          <i class="fa-regular fa-star" data-value="5"></i>
+        </div>
+      </div>
+      <button type="button" class="btn btn-primary">Enviar</button>
+    </form>
+  </div>
   <footer class="text-muted">
     <div class="container">
       <p class="float-end">

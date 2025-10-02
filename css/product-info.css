@@ -34,5 +34,70 @@ h2 {
 /* Imagen dentro del carousel */
 #imagenesProducto {
     border-radius: 15px;
+    width: 100%;
+    height: auto;
 }
 
+/* Contenedor de la columna de productos relacionados */
+#productosRelacionadosContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end; /* Alinea todo a la derecha */
+    width: 250px;
+    gap: 10px;
+}
+
+/* Título de productos relacionados alineado a la derecha */
+#productosRelacionadosContainer h2 {
+    text-align: right;
+    width: 100%;
+    margin: 0 0 10px 0;
+}
+
+/* Productos relacionados */
+#productosRelacionados {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+}
+
+#productosRelacionados .producto {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+#productosRelacionados .producto:hover {
+    transform: scale(1.03);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+/* Responsivo */
+@media screen and (max-width: 1024px) {
+    #productoContainer {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #carouselProducto,
+    #productosRelacionadosContainer {
+        width: 100%;
+    }
+
+    #productosRelacionadosContainer h2 {
+        text-align: center;
+    }
+
+    #productosRelacionados {
+        flex-direction: row;
+        overflow-x: auto;
+        gap: 10px;
+    }
+
+    #productosRelacionados .producto {
+        flex: 0 0 auto;
+    }
+}
