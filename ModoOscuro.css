@@ -1,0 +1,150 @@
+/* ======== MODO OSCURO GLOBAL ======== */
+body.dark-mode {
+  background-color: #121212 !important;
+  color: #ffffff !important;
+}
+
+/* ======== NAVBAR ======== */
+body.dark-mode .navbar,
+body.dark-mode .navbar * {
+  background-color: #1f1f1f !important;
+  color: #ffffff !important;
+  border-color: #333 !important;
+}
+
+body.dark-mode .navbar a.nav-link:hover {
+  color: #f0b90b !important;
+}
+
+/* ======== MAIN, FOOTER Y CONTENEDORES ======== */
+body.dark-mode main,
+body.dark-mode footer,
+body.dark-mode .container,
+body.dark-mode .text-muted,
+body.dark-mode .jumbotron,
+body.dark-mode .album {
+  background-color: #121212 !important;
+  color: #ffffff !important;
+}
+
+/* ======== TARJETAS ======== */
+body.dark-mode .card,
+body.dark-mode .custom-card,
+body.dark-mode .list-group-item {
+  background-color: #1e1e1e !important;
+  color: #ffffff !important;
+  border-color: #333 !important;
+}
+
+/* ======== BOTONES ======== */
+body.dark-mode .btn,
+body.dark-mode .btn-light,
+body.dark-mode .btn-outline-dark,
+body.dark-mode .btn-link {
+  background-color: #333 !important;
+  color: #ffffff !important;
+  border-color: #555 !important;
+}
+
+body.dark-mode .btn:hover {
+  background-color: #444 !important;
+}
+
+/* ======== ALERTAS ======== */
+body.dark-mode .alert {
+  background-color: #242424 !important;
+  color: #ffffff !important;
+  border-color: #555 !important;
+}
+
+/* ======== INPUTS Y FORMULARIOS ======== */
+body.dark-mode input,
+body.dark-mode select,
+body.dark-mode textarea,
+body.dark-mode .form-control {
+  background-color: #1e1e1e !important;
+  color: #ffffff !important;
+  border-color: #555 !important;
+}
+
+body.dark-mode input::placeholder,
+body.dark-mode textarea::placeholder {
+  color: #aaaaaa !important;
+}
+
+/* ======== DROPDOWN ======== */
+body.dark-mode .dropdown-menu {
+  background-color: #1f1f1f !important;
+  color: #ffffff !important;
+  border-color: #333 !important;
+}
+
+body.dark-mode .dropdown-item {
+  color: #ffffff !important;
+}
+
+body.dark-mode .dropdown-item:hover {
+  background-color: #333 !important;
+  color: #f0b90b !important;
+}
+
+/* ======== TABLAS ======== */
+body.dark-mode table,
+body.dark-mode th,
+body.dark-mode td {
+  background-color: #1e1e1e !important;
+  color: #ffffff !important;
+  border-color: #333 !important;
+}
+
+/* ======== ENLACES ======== */
+body.dark-mode a {
+  color: #f0b90b !important;
+}
+
+body.dark-mode a:hover {
+  color: #ffd700 !important;
+}
+
+/* ======== SPINNER ======== */
+body.dark-mode #spinner-wrapper {
+  background-color: rgba(0, 0, 0, 0.8) !important;
+}
+
+/* ======== LOGIN PAGE ======== */
+body.dark-mode .login-container {
+  background-color: #1e1e1e !important;
+  color: #ffffff !important;
+}
+
+body.dark-mode .button-submit {
+  background-color: #333 !important;
+  color: #ffffff !important;
+}
+
+body.dark-mode .button-submit:hover {
+  background-color: #444 !important;
+}
+
+/* ======== PRODUCTOS Y DETALLES ======== */
+body.dark-mode .product-info,
+body.dark-mode .product-card,
+body.dark-mode .carousel-inner,
+body.dark-mode #productosRelacionados {
+  background-color: #121212 !important;
+  color: #ffffff !important;
+}
+
+/* ======== ESTRELLAS Y CALIFICACIONES ======== */
+body.dark-mode .fa-star {
+  color: #f0b90b !important;
+}
+
+/* ======== FOOTER ======== */
+body.dark-mode footer a {
+  color: #f0b90b !important;
+}
+
+body.dark-mode footer a:hover {
+  color: #ffd700 !important;
+}

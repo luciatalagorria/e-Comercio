@@ -1,8 +1,8 @@
-|<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>eMercado - Todo lo que busques está aquí</title>
 
@@ -11,10 +11,13 @@
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
   <link href="css/product-info.css" rel="stylesheet">
+  <link href="css/product-info-darkmode.css" rel="stylesheet">
   <script src="https://kit.fontawesome.com/dd26e005fc.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="ModoOscuro.css">
+  <script src="ModoOscuro.js"></script>
+</head>
 
 <body>
-
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-1">
     <div class="container">
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -27,47 +30,47 @@
             <a class="nav-link" href="index.html">Inicio</a>
           </li>
           <li class="nav-item">
-
             <a class="nav-link active" href="categories.html">Categorías</a>
-
           </li>
           <li class="nav-item">
             <a class="nav-link" href="sell.html">Vender</a>
           </li>
-
-           <li class="nav-item">
+          <li class="nav-item">
             <a class="nav-link" href="cart.html"><i class="fa fa-shopping-cart"></i></a>
           </li>
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">
               <i class="fa fa-user"></i><span id="usuario-nav"></span>
             </a>
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+              <div id="MODO-OSCURO"></div>
               <li><a class="dropdown-item" href="login.html">Iniciar sesión</a></li>
             </ul>
-
           </li>
         </ul>
       </div>
     </div>
   </nav>
 
-<main>
-  <div class="container my-5">
-    <div class="row justify-content-center">
-      <!-- Columna del producto -->
+  <!-- Contenedor principal con clase para aplicar el modo oscuro -->
+  <main class="container my-5 product-info">
+    <div class="row">
+      <!-- Columna del producto principal -->
       <div class="col-md-8 col-lg-8">
-        <h2 id="nombreProducto" class="mb-3"></h2>
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <h2 id="nombreProducto" class="mb-0"></h2>
+          
+        </div>
+
         <span id="categoriaProducto" class="badge bg-primary mb-3"></span>
 
         <div id="carouselProducto" class="carousel slide mb-4" data-bs-ride="carousel">
           <div class="carousel-inner" id="imagenesProducto"></div>
-          <button class="carousel-control-prev" type="button" data-bs-target="#carouselProducto"
-            data-bs-slide="prev">
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselProducto" data-bs-slide="prev">
             <span class="carousel-control-prev-icon"></span>
           </button>
-          <button class="carousel-control-next" type="button" data-bs-target="#carouselProducto"
-            data-bs-slide="next">
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselProducto" data-bs-slide="next">
             <span class="carousel-control-next-icon"></span>
           </button>
         </div>
@@ -76,21 +79,19 @@
         <p class="text-muted"><strong>Vendidos:</strong> <span id="vendidosProducto"></span></p>
       </div>
 
-
-  </div>
-        <!-- Columna derecha: productos relacionados -->
-        <div class="col-md-4">
-          <h3 id="titulo-productosRelacionados">Productos relacionados</h3>
-          <div id="related-products" class="row row-cols-1 g-3">
-            <!-- Aquí se insertan dinámicamente -->
-          </div>
+      <!-- Columna de productos relacionados -->
+      <div class="col-md-4 col-lg-4">
+        <h3 id="titulo-productosRelacionados">Productos relacionados</h3>
+        <div id="productosRelacionados" class="d-flex flex-column gap-3">
+          <!-- Aquí se insertan dinámicamente -->
         </div>
-
-</main>
+      </div>
+    </div>
+  </main>
 
   <!-- Sección de Calificaciones -->
   <div class="container mt-4">
-    <h3 id="tituloComentarios">Calificaciones</h3>
+    <h3>Calificaciones</h3>
     <div id="product-comments" class="list-group">
       <!-- Aquí se insertan los comentarios desde JS -->
     </div>
@@ -98,7 +99,7 @@
 
   <!-- Formulario de Nueva Calificación -->
   <div class="container mt-4">
-    <h4 id="dejaTuCalificacion">Deja tu calificación</h4>
+    <h4>Deja tu calificación</h4>
     <form id="rating-form">
       <div class="mb-3">
         <label for="rating-text" class="form-label">Comentario:</label>
@@ -118,14 +119,17 @@
       <button type="button" class="btn btn-primary">Enviar</button>
     </form>
   </div>
+
   <footer class="text-muted">
     <div class="container">
       <p class="float-end">
         <a href="#">Volver arriba</a>
       </p>
-      <p>Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a></p>
+      <p>Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a>
+      </p>
     </div>
   </footer>
+
   <div id="spinner-wrapper">
     <div class="lds-ring">
       <div></div>
@@ -134,11 +138,12 @@
       <div></div>
     </div>
   </div>
+
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/init.js"></script>
-  <script src="js/product-info.js"></script>
   <script src="js/email_navbar.js"></script>
-  
+  <script src="js/product-info.js"></script>
+  <script src="js/product-info-darkmode.js"></script>
 </body>
 
 </html>
