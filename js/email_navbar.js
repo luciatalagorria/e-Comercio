@@ -1,8 +1,32 @@
+
 document.addEventListener("DOMContentLoaded", () => {
   const usuario = localStorage.getItem("usuario");
   const usuarioNav = document.getElementById("usuario-nav");
+  const dropdownMenu = document.querySelector(".dropdown-menu");
 
-  if (usuario && usuarioNav) {
-    usuarioNav.textContent = usuario;
+  if (usuario) {
+    // Mostrar nombre/email en el icono del usuario
+    usuarioNav.textContent = " " + usuario;
+
+    // Reemplazar el contenido del menú desplegable
+    dropdownMenu.innerHTML = `
+      <li><a class="dropdown-item" href="my-profile.html">Mi perfil</a></li>
+      <li><a class="dropdown-item" id="cerrar-sesion" href="#">Cerrar sesión</a></li>
+    `;
+
+    // Agregar funcionalidad al botón "Cerrar sesión"
+    document.getElementById("cerrar-sesion").addEventListener("click", (e) => {
+      e.preventDefault();
+      localStorage.removeItem("usuario");
+      localStorage.removeItem("perfil");
+      window.location.href = "login.html";
+    });
+
+  } else {
+    // Si no hay usuario logueado, mostrar solo "Iniciar sesión"
+    usuarioNav.textContent = "";
+    dropdownMenu.innerHTML = `
+      <li><a class="dropdown-item" href="login.html">Iniciar sesión</a></li>
+    `;
   }
 });

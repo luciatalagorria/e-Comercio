@@ -60,7 +60,6 @@ function cargarProducto(id, cat) {
 function renderRelacionados(productoActual, todosProductos) {
   relacionadosEl.innerHTML = "";
 
-  // Tomamos hasta 4 productos diferentes al actual
   const relacionados = todosProductos.filter(p => p.id !== productoActual.id).slice(0, 4);
 
   relacionados.forEach(p => {
@@ -76,15 +75,20 @@ function renderRelacionados(productoActual, todosProductos) {
       </div>
     `;
 
-    card.addEventListener("click", () => {
-      // Actualizar variables y recargar contenido sin recargar la página
-      productoId = p.id;
-      categoria = p.category || categoria;
-      cargarProducto(productoId, categoria);
-      // Reiniciar carousel a primera imagen
-      const carousel = bootstrap.Carousel.getInstance(document.getElementById("carouselProducto"));
-      if (carousel) carousel.to(0);
-    });
+   card.addEventListener("click", () => {
+  productoId = p.id;
+  categoria = p.category || categoria;
+
+  // Cargar el nuevo producto
+  cargarProducto(productoId, categoria);
+
+  // 🔹 Cargar los comentarios del nuevo producto
+  cargarComentarios(productoId);
+
+  // Reiniciar el carousel a la primera imagen
+  const carousel = bootstrap.Carousel.getInstance(document.getElementById("carouselProducto"));
+  if (carousel) carousel.to(0);
+});
 
     relacionadosEl.appendChild(card);
   });
@@ -93,33 +97,82 @@ function renderRelacionados(productoActual, todosProductos) {
 // Inicializar la página
 cargarProducto(productoId, categoria);
 
-// Función para renderizar estrellas
+//////////////////////////////////////////
+// ⭐⭐⭐ Lógica de las estrellas de calificación ⭐⭐⭐
+const stars = document.querySelectorAll("#rating-stars i");
+let selectedRating = 0; // Calificación guardada
+
+function highlightStars(rating) {
+  stars.forEach((star, index) => {
+    if (index < rating) {
+      star.classList.remove("fa-regular");
+      star.classList.add("fa-solid"); // Llena la estrella
+    } else {
+      star.classList.remove("fa-solid");
+      star.classList.add("fa-regular"); // Vacía la estrella
+    }
+  });
+}
+
+stars.forEach((star, index) => {
+  const ratingValue = index + 1;
+
+  star.addEventListener("mouseover", () => highlightStars(ratingValue));
+  star.addEventListener("mouseout", () => highlightStars(selectedRating));
+  star.addEventListener("click", () => {
+    selectedRating = ratingValue;
+    highlightStars(selectedRating);
+    console.log("Calificación seleccionada:", selectedRating);
+  });
+});
+
+// Mostrar todo vacío al inicio
+highlightStars(0);
+
+//////////////////////////////////////////
+// Función para renderizar estrellas en comentarios
 function getStars(score) {
-  let stars = '';
+  let starsHTML = '';
   for (let i = 1; i <= 5; i++) {
     if (i <= score) {
-      stars += '<i class="fa-solid fa-star text-warning"></i>'; // estrella llena
+      starsHTML += '<i class="fa-solid fa-star text-warning"></i>'; // estrella llena
     } else {
-      stars += '<i class="fa-regular fa-star text-warning"></i>'; // estrella vacía
+      starsHTML += '<i class="fa-regular fa-star text-warning"></i>'; // estrella vacía
     }
   }
-  return stars;
+  return starsHTML;
 }
 
 const contenedorComentarios = document.getElementById("product-comments");
 
-fetch(`https://japceibal.github.io/emercado-api/products_comments/${productoId}.json`)
-  .then(res => res.json())
-  .then(data => { 
-    data.forEach(comment => {
-      const comentario = document.createElement("div");
-      comentario.className = "mb-3 border-bottom pb-2";
-      comentario.innerHTML = `
-        <strong>${comment.user}</strong> - <span class="text-muted">${comment.dateTime}</span>
-        <div>${getStars(comment.score)}</div>
-        <p>${comment.description}</p>
-      `;
-      contenedorComentarios.appendChild(comentario);
+// 🔹 Nueva función para cargar comentarios dinámicamente
+function cargarComentarios(id) {
+  contenedorComentarios.innerHTML = ""; // Limpia los comentarios anteriores
+
+  fetch(`https://japceibal.github.io/emercado-api/products_comments/${id}.json`)
+    .then(res => res.json())
+    .then(data => {
+      if (!data || data.length === 0) {
+        contenedorComentarios.innerHTML = "<p class='text-muted'>No hay comentarios para este producto.</p>";
+        return;
+      }
+
+      data.forEach(comment => {
+        const comentario = document.createElement("div");
+        comentario.className = "mb-3 border-bottom pb-2";
+        comentario.innerHTML = `
+          <strong>${comment.user}</strong> - <span class="text-muted">${comment.dateTime}</span>
+          <div>${getStars(comment.score)}</div>
+          <p>${comment.description}</p>
+        `;
+        contenedorComentarios.appendChild(comentario);
+      });
+    })
+    .catch(error => {
+      console.error("Error al cargar los comentarios:", error);
+      contenedorComentarios.innerHTML = "<p class='text-danger'>Error al cargar los comentarios.</p>";
     });
-  })
-  .catch(error => console.error("Error al cargar los comentarios:", error));
+}
+
+// 🔹 Carga inicial de comentarios
+cargarComentarios(productoId);

@@ -2,7 +2,7 @@
 <html lang="es">
 
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>eMercado - Todo lo que busques está aquí</title>
 
@@ -12,10 +12,8 @@
   <link href="css/styles.css" rel="stylesheet">
   <link href="css/product-info.css" rel="stylesheet">
   <script src="https://kit.fontawesome.com/dd26e005fc.js" crossorigin="anonymous"></script>
-</head>
 
 <body>
-
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-1">
     <div class="container">
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -28,65 +26,57 @@
             <a class="nav-link" href="index.html">Inicio</a>
           </li>
           <li class="nav-item">
-
             <a class="nav-link active" href="categories.html">Categorías</a>
-
           </li>
           <li class="nav-item">
             <a class="nav-link" href="sell.html">Vender</a>
           </li>
-
-           <li class="nav-item">
+          <li class="nav-item">
             <a class="nav-link" href="cart.html"><i class="fa fa-shopping-cart"></i></a>
           </li>
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">
               <i class="fa fa-user"></i><span id="usuario-nav"></span>
             </a>
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
               <li><a class="dropdown-item" href="login.html">Iniciar sesión</a></li>
             </ul>
-
           </li>
         </ul>
       </div>
     </div>
   </nav>
 
-<main>
-  <div class="container my-5">
-    <div class="row justify-content-center">
-      <!-- Columna del producto -->
-      <div class="col-md-8 col-lg-8">
-        <h2 id="nombreProducto" class="mb-3"></h2>
-        <span id="categoriaProducto" class="badge bg-primary mb-3"></span>
+  <main class="container my-5">
+  <div class="row">
+    <!-- Columna del producto principal -->
+    <div class="col-md-8 col-lg-8">
+      <h2 id="nombreProducto" class="mb-3"></h2>
+      <span id="categoriaProducto" class="badge bg-primary mb-3"></span>
 
-        <div id="carouselProducto" class="carousel slide mb-4" data-bs-ride="carousel">
-          <div class="carousel-inner" id="imagenesProducto"></div>
-          <button class="carousel-control-prev" type="button" data-bs-target="#carouselProducto"
-            data-bs-slide="prev">
-            <span class="carousel-control-prev-icon"></span>
-          </button>
-          <button class="carousel-control-next" type="button" data-bs-target="#carouselProducto"
-            data-bs-slide="next">
-            <span class="carousel-control-next-icon"></span>
-          </button>
-        </div>
-
-        <p id="descripcionProducto" class="lead"></p>
-        <p class="text-muted"><strong>Vendidos:</strong> <span id="vendidosProducto"></span></p>
+      <div id="carouselProducto" class="carousel slide mb-4" data-bs-ride="carousel">
+        <div class="carousel-inner" id="imagenesProducto"></div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselProducto" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselProducto" data-bs-slide="next">
+          <span class="carousel-control-next-icon"></span>
+        </button>
       </div>
 
+      <p id="descripcionProducto" class="lead"></p>
+      <p class="text-muted"><strong>Vendidos:</strong> <span id="vendidosProducto"></span></p>
+    </div>
 
+    <!-- Columna de productos relacionados -->
+    <div class="col-md-4 col-lg-4">
+      <h3 id="titulo-productosRelacionados">Productos relacionados</h3>
+      <div id="productosRelacionados" class="d-flex flex-column gap-3">
+        <!-- Aquí se insertan dinámicamente -->
+      </div>
+    </div>
   </div>
-        <!-- Columna derecha: productos relacionados -->
-        <div class="col-md-4">
-          <h3 id="titulo-productosRelacionados">Productos relacionados</h3>
-          <div id="related-products" class="row row-cols-1 g-3">
-            <!-- Aquí se insertan dinámicamente -->
-          </div>
-        </div>
-
 </main>
 
   <!-- Sección de Calificaciones -->
@@ -124,9 +114,11 @@
       <p class="float-end">
         <a href="#">Volver arriba</a>
       </p>
-      <p>Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a></p>
+      <p>Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a>
+      </p>
     </div>
   </footer>
+
   <div id="spinner-wrapper">
     <div class="lds-ring">
       <div></div>
@@ -135,11 +127,12 @@
       <div></div>
     </div>
   </div>
+
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/init.js"></script>
+  <script src="js/email_navbar.js"></script>
   <script src="js/product-info.js"></script>
   <script src="js/email_navbar.js"></script>
-  
 </body>
 
 </html>
