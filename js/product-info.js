@@ -75,15 +75,20 @@ function renderRelacionados(productoActual, todosProductos) {
       </div>
     `;
 
-    card.addEventListener("click", () => {
-      productoId = p.id;
-      categoria = p.category || categoria;
-      cargarProducto(productoId, categoria);
+   card.addEventListener("click", () => {
+  productoId = p.id;
+  categoria = p.category || categoria;
 
-      // Reiniciar carousel a primera imagen
-      const carousel = bootstrap.Carousel.getInstance(document.getElementById("carouselProducto"));
-      if (carousel) carousel.to(0);
-    });
+  // Cargar el nuevo producto
+  cargarProducto(productoId, categoria);
+
+  // 🔹 Cargar los comentarios del nuevo producto
+  cargarComentarios(productoId);
+
+  // Reiniciar el carousel a la primera imagen
+  const carousel = bootstrap.Carousel.getInstance(document.getElementById("carouselProducto"));
+  if (carousel) carousel.to(0);
+});
 
     relacionadosEl.appendChild(card);
   });
@@ -140,18 +145,36 @@ function getStars(score) {
 
 const contenedorComentarios = document.getElementById("product-comments");
 
-fetch(`https://japceibal.github.io/emercado-api/products_comments/${productoId}.json`)
-  .then(res => res.json())
-  .then(data => { 
-    data.forEach(comment => {
-      const comentario = document.createElement("div");
-      comentario.className = "mb-3 border-bottom pb-2";
-      comentario.innerHTML = `
-        <strong>${comment.user}</strong> - <span class="text-muted">${comment.dateTime}</span>
-        <div>${getStars(comment.score)}</div>
-        <p>${comment.description}</p>
-      `;
-      contenedorComentarios.appendChild(comentario);
+// 🔹 Nueva función para cargar comentarios dinámicamente
+function cargarComentarios(id) {
+  contenedorComentarios.innerHTML = ""; // Limpia los comentarios anteriores
+
+  fetch(`https://japceibal.github.io/emercado-api/products_comments/${id}.json`)
+    .then(res => res.json())
+    .then(data => {
+      if (!data || data.length === 0) {
+        contenedorComentarios.innerHTML = "<p class='text-muted'>No hay comentarios para este producto.</p>";
+        return;
+      }
+
+      data.forEach(comment => {
+        const comentario = document.createElement("div");
+        comentario.className = "mb-3 border-bottom pb-2";
+        comentario.innerHTML = `
+          <strong>${comment.user}</strong> - <span class="text-muted">${comment.dateTime}</span>
+          <div>${getStars(comment.score)}</div>
+          <p>${comment.description}</p>
+        `;
+        contenedorComentarios.appendChild(comentario);
+      });
+    })
+    .catch(error => {
+      console.error("Error al cargar los comentarios:", error);
+      contenedorComentarios.innerHTML = "<p class='text-danger'>Error al cargar los comentarios.</p>";
     });
+}
+
+// 🔹 Carga inicial de comentarios
+cargarComentarios(productoId);
   })
   .catch(error => console.error("Error al cargar los comentarios:", error));

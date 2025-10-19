@@ -7,11 +7,11 @@ body {
     transition: background-color 0.4s, color 0.4s;
 }
 
-h2 {
+h2, h3, h4 {
     color: #f19305;
     font-weight: 700;
-    font-size: 30px;
-    transition: color 0.4s;
+    font-size: 24px;
+    margin-bottom: 20px;
 }
 
 /* Contenedor principal del producto y relacionados */
@@ -129,7 +129,7 @@ body.dark-mode #productosRelacionados .producto {
 
     #productosRelacionadosContainer h2 {
         text-align: center;
-    }
+    };
 
     #productosRelacionados {
         flex-direction: row;
@@ -139,5 +139,5 @@ body.dark-mode #productosRelacionados .producto {
 
     #productosRelacionados .producto {
         flex: 0 0 auto;
-    }
-}
+    };
+};

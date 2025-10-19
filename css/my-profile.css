@@ -1,0 +1,12 @@
+#profileImage {
+  object-fit: cover;
+  background-color: #f8f9fa;
+};
+
+.text-warning {
+  color: orange !important;
+};
+
+body {
+  min-height: 100vh;
+};
