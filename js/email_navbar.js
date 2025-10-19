@@ -10,9 +10,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Reemplazar el contenido del menú desplegable
     dropdownMenu.innerHTML = `
-      <li><a class="dropdown-item" href="my-profile.html">Mi perfil</a></li>
-      <li><a class="dropdown-item" id="cerrar-sesion" href="#">Cerrar sesión</a></li>
-    `;
+  <li><a class="dropdown-item" href="my-profile.html">Mi perfil</a></li>
+  <li><button class="modo-oscuro-btn">Modo Oscuro</button></li>
+  <li><a class="dropdown-item" id="cerrar-sesion" href="#">Cerrar sesión</a></li>
+`;
 
     // Agregar funcionalidad al botón "Cerrar sesión"
     document.getElementById("cerrar-sesion").addEventListener("click", (e) => {
