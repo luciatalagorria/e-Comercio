@@ -176,3 +176,5 @@ function cargarComentarios(id) {
 
 // 🔹 Carga inicial de comentarios
 cargarComentarios(productoId);
+  })
+  .catch(error => console.error("Error al cargar los comentarios:", error));
