@@ -10,6 +10,7 @@
   <link href="css/font-awesome.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
   <link rel="stylesheet" href="ModoOscuro.css">
+  <link rel="stylesheet" href="css/cart.css">
   <script src="ModoOscuro.js"></script>
 </head>
 
@@ -53,13 +54,21 @@
     </div>
   </nav>
 
-  <main>
-    <div class="container">
-      <div class="alert alert-danger text-center" role="alert">
-        <h4 class="alert-heading">Funcionalidad en desarrollo</h4>
-      </div>
+<main>
+    <div class="container my-5">
+    <h2 id="tituloCarrito" class="text-center fw-bold text-warning mb-4">Carrito de Compras</h2>
+
+    <div id="containerCarrito"></div>
+
+    <div id="carrVacio" class="alert alert-info text-center mt-5 d-none">
+      <h5>Tu carrito está vacío 🛒</h5>
+      <p>Agrega productos desde la sección de <a href="categories.html" class="alert-link">Categorías</a>.</p>
     </div>
-  </main>
+  </div>
+
+</main>
+
+
   <footer class="text-muted">
     <div class="container">
       <p class="float-end">
