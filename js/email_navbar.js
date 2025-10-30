@@ -31,3 +31,19 @@ document.addEventListener("DOMContentLoaded", () => {
     `;
   }
 });
+
+
+document.addEventListener("DOMContentLoaded", () => {
+  const badge = document.getElementById("notif-badge");
+  const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+
+  // Mostrar la cantidad total de productos distintos
+  badge.textContent = carrito.length;
+
+  // Ocultar el círculo si no hay productos
+  if (carrito.length === 0) {
+    badge.style.display = "none";
+  } else {
+    badge.style.display = "inline-block";
+  }
+});
