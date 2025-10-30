@@ -173,34 +173,29 @@ function cargarComentarios(id) {
       console.error("Error al cargar los comentarios:", error);
       contenedorComentarios.innerHTML = "<p class='text-danger'>Error al cargar los comentarios.</p>";
     });
-  })
-  .catch(error => console.error("Error al cargar los comentarios:", error));
 
-  // Funcionalidad del botón "Comprar"
+  }
 
-document.addEventListener("DOMContentLoaded", () => {
-  const btnComprar = document.getElementById("btnComprar");
+   // Funcionalidad del botón "Comprar"
 
-  btnComprar.addEventListener("click", () => {
-    const producto = {
-      id: productoId,
-      name: document.getElementById("nombreProducto").textContent,
-      category: document.getElementById("categoriaProducto").textContent,
-      description: document.getElementById("descripcionProducto").textContent,
-      soldCount: document.getElementById("vendidosProducto").textContent,
-      image: document.querySelector("#imagenesProducto img")?.src || "img/no-image.png",
-      quantity: 1,
-    };
+btnComprar.addEventListener("click", () => {
+  const producto = {
+    id: productoId,
+    name: document.getElementById("nombreProducto").textContent,
+    category: document.getElementById("categoriaProducto").textContent,
+    description: document.getElementById("descripcionProducto").textContent,
+    soldCount: document.getElementById("vendidosProducto").textContent,
+    image: document.querySelector("#imagenesProducto img")?.src || "img/no-image.png",
+    price: window.precioProducto || 0,
+    currency: window.monedaProducto || "UYU",
+    quantity: 1,
+  };
 
-    let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
-    const existing = carrito.find(p => p.id === producto.id);
-    if (existing) {
-      existing.quantity += 1;
-    } else {
-      carrito.push(producto);
-    }
+  let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+  const existing = carrito.find(p => p.id === producto.id);
+  if (existing) existing.quantity += 1;
+  else carrito.push(producto);
 
-    localStorage.setItem("carrito", JSON.stringify(carrito));
-    window.location.href = "cart.html";
-  });
+  localStorage.setItem("carrito", JSON.stringify(carrito));
+  window.location.href = "cart.html";
 });
