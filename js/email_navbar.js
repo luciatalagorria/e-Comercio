@@ -41,7 +41,7 @@ document.addEventListener("DOMContentLoaded", () => {
   badge.textContent = carrito.length;
 
   // Ocultar el círculo si no hay productos
-  if (carrito.length === 0) {
+  if (carrito.length === 0 || carrito === "[]") {
     badge.style.display = "none";
   } else {
     badge.style.display = "inline-block";
