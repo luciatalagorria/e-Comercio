@@ -11,6 +11,8 @@ const descripcionEl = document.getElementById("descripcionProducto");
 const vendidosEl = document.getElementById("vendidosProducto");
 const imagenesEl = document.getElementById("imagenesProducto");
 const relacionadosEl = document.getElementById("productosRelacionados");
+const precioProductoEl = document.getElementById("precioProducto");
+const monedaProductoEl = document.getElementById("monedaProducto");
 
 // Función principal para cargar producto
 function cargarProducto(id, cat) {
@@ -33,6 +35,8 @@ function cargarProducto(id, cat) {
       categoriaEl.textContent = producto.category || cat || "Sin categoría";
       descripcionEl.textContent = producto.description || "Sin descripción";
       vendidosEl.textContent = producto.soldCount || 0;
+      precioProductoEl.textContent = producto.cost || "0";
+      monedaProductoEl.textContent = producto.currency || "";
 
       // Renderizar imágenes
       imagenesEl.innerHTML = "";
@@ -186,8 +190,8 @@ btnComprar.addEventListener("click", () => {
     description: document.getElementById("descripcionProducto").textContent,
     soldCount: document.getElementById("vendidosProducto").textContent,
     image: document.querySelector("#imagenesProducto img")?.src || "img/no-image.png",
-    price: window.precioProducto || 0,
-    currency: window.monedaProducto || "UYU",
+    price: precioProductoEl.textContent,
+    currency: monedaProductoEl.textContent,
     quantity: 1,
   };
 
