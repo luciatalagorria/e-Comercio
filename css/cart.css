@@ -43,7 +43,7 @@
 .nombre-producto {
     font-size: 1.3rem;
     font-weight: bold;
-    color: #5D96CF;
+    color: #f09200;
 }
 
 
@@ -80,10 +80,14 @@
 
 /* Subtotal */
 .subtotal-valor {
-    color: #5D96CF;
-    font-size: 1.3rem;
-    font-weight: bold;
-    margin-bottom: 10px; 
+    color: #fafafa;
+    background-color: #f09200;
+  border: none;
+  border-radius: 8px;
+  padding: 6px 12px;
+  font-weight: bold;
+  transition: 0.2s;
+  gap: 8px;
 }
 
 
@@ -109,8 +113,9 @@
 }
 
 .btn-success {
-    
+    font-family: anek devanagari, sans-serif;
     margin-left: 0; 
+    background-color: #5D96CF;
 }
 
 
@@ -128,11 +133,12 @@
 
 /*  BOTÓN ELIMINAR  */
 .btn-eliminar {
-  background-color: #ff4d4d;
-  color: white;
-  border: none;
+  margin-top: 6px;
+  background-color: #ffffff;
+  color: #ff4d4d;
+  border: 1px solid #ff4d4d;
   border-radius: 6px;
-  padding: 6px 12px;
+  padding: 4px 8px;
   font-weight: bold;
   transition: 0.2s;
 }
@@ -199,6 +205,6 @@
 
 /* El control de cantidad en la tarjeta */
 .detalle-item.cantidad-control {
-    /* Asegurar que el input-group no sea demasiado ancho */
+
     width: 120px; 
 }
