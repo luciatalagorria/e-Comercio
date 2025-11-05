@@ -1,4 +1,3 @@
-<<<<<<< Updated upstream
 document.addEventListener("DOMContentLoaded", () => {
   const containerCarrito = document.getElementById("containerCarrito");
   const carrVacio = document.getElementById("carrVacio");
@@ -180,7 +179,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 });
-=======
 // --------------------------
 // 🛒 CART.JS - ENTREGA 7
 // --------------------------
@@ -333,5 +331,3 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
-
->>>>>>> Stashed changes

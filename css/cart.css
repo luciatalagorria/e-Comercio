@@ -1,111 +1,22 @@
-<<<<<<< Updated upstream
-/* CONTENEDOR GENERAL */
-#containerCarrito {
-  font-family:  Anek Devanagari, sans-serif;
-=======
 /* ------------------------------------------------------
    🎨 MODO OSCURO + DISEÑO CARRITO (Entrega 7)
-   Unificado y corregido para secciones con fondo blanco
+   Versión unificada y corregida
 ------------------------------------------------------- */
 
-/* Estilos base (modo claro) */
+/* CONTENEDOR GENERAL */
 #containerCarrito {
   font-family: 'Anek Devanagari', sans-serif;
->>>>>>> Stashed changes
   background-color: #fff;
   border-radius: 12px;
   box-shadow: 0 4px 15px rgba(0,0,0,0.1);
   padding: 25px;
-<<<<<<< Updated upstream
 }
 
-#productos-en-carrito {
-    display: flex;
-    flex-direction: column;
-    gap: 15px; /* Espacio entre las tarjetas de producto */
-}
-
-.producto-card {
-    display: flex; 
-    align-items: center;
-    justify-content: space-between;
-    background-color: #ffffff; /* Fondo claro para la tarjeta */
-    border-radius: 8px;
-    padding: 15px 20px;
-    border: 1px solid #ddd;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.05); /* Sombra */
-}
-
-
-/* Imagen y nombre */
-
-.producto-info {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    width: 35%; 
-}
-
-.card-img-producto {
-    width: 100px; 
-    height: auto;
-    border-radius: 4px;
-}
-
-.nombre-producto {
-    font-size: 1.3rem;
-    font-weight: bold;
-    color: #f09200;
-}
-
-
-/* Seccion de detalles y acciones */
-
-.producto-detalles {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 65%;
-    gap: 10px;
-}
-
-.detalle-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    
-    width: calc(100% / 3); 
-    text-align: center;
-}
-
-.detalle-etiqueta {
-    font-size: 0.9rem;
-    color: #6c757d; 
-    margin-bottom: 5px;
-}
-
-.detalle-valor {
-    font-weight: 600;
-    color: #5D96CF;
-    font-size: 1.1rem;
-=======
-  transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
-}
-
+/* PRODUCTOS EN CARRITO */
 #productos-en-carrito {
   display: flex;
   flex-direction: column;
   gap: 15px;
-}
-
-/* Bloques generales de secciones (envío, dirección, pago, etc.) */
-.section-box {
-  background-color: #ffffff;
-  border-radius: 8px;
-  padding: 15px 20px;
-  margin-bottom: 20px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-  transition: background-color 0.3s, color 0.3s;
 }
 
 /* Tarjeta de producto */
@@ -121,6 +32,7 @@
   transition: background-color 0.3s, border-color 0.3s;
 }
 
+/* Imagen y nombre */
 .producto-info {
   display: flex;
   align-items: center;
@@ -140,6 +52,7 @@
   color: #f09200;
 }
 
+/* Sección de detalles y acciones */
 .producto-detalles {
   display: flex;
   align-items: center;
@@ -166,18 +79,23 @@
   font-weight: 600;
   color: #5D96CF;
   font-size: 1.1rem;
->>>>>>> Stashed changes
+  transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
+}
+
+/* Bloques de secciones (envío, dirección, pago, etc.) */
+.section-box {
+  background-color: #ffffff;
+  border-radius: 8px;
+  padding: 15px 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  transition: background-color 0.3s, color 0.3s;
 }
 
 /* Subtotal */
 .subtotal-valor {
-<<<<<<< Updated upstream
-    color: #fafafa;
-    background-color: #f09200;
-=======
   color: #fafafa;
   background-color: #f09200;
->>>>>>> Stashed changes
   border: none;
   border-radius: 8px;
   padding: 6px 12px;
@@ -186,50 +104,6 @@
   gap: 8px;
 }
 
-<<<<<<< Updated upstream
-
-/* Total y Finalizar compra */
-.total-container {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    gap: 15px;
-    margin-top: 30px;
-}
-
-#total {
-   
-    background-color: #ffffff;
-    color: #000000;
-    font-weight: bold;
-    padding: 12px 24px;
-    border-radius: 8px;
-    margin: 0;
-    text-align: left; 
-    line-height: 1;
-}
-
-.btn-success {
-    font-family: anek devanagari, sans-serif;
-    margin-left: 0; 
-    background-color: #5D96CF;
-}
-
-
-/*  CANTIDAD  */
-.input-cantidad {
-  width: 70px;
-  text-align: center;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  padding: 4px;
-  font-weight: bold;
-}
-
-
-
-/*  BOTÓN ELIMINAR  */
-=======
 /* Total y Finalizar compra */
 .total-container {
   display: flex;
@@ -251,7 +125,6 @@
   transition: background-color 0.3s, color 0.3s;
 }
 
-/* Botón principal */
 .btn-success {
   font-family: 'Anek Devanagari', sans-serif;
   margin-left: 0;
@@ -299,8 +172,16 @@
   background-color: transparent;
 }
 
+.input-cantidad::-webkit-outer-spin-button,
+.input-cantidad::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.input-cantidad {
+  -moz-appearance: textfield;
+}
+
 /* BOTÓN ELIMINAR */
->>>>>>> Stashed changes
 .btn-eliminar {
   margin-top: 6px;
   background-color: #ffffff;
@@ -314,17 +195,6 @@
 
 .btn-eliminar:hover {
   background-color: #e60000;
-<<<<<<< Updated upstream
-  transform: scale(1.05);
-}
-
-
-/*  CARRITO VACÍO  */
-#carrVacio {
-  border-radius: 10px;
-  border: 2px solid #06b93c;
-  border-color: #06b93c;
-=======
   color: #fff;
   transform: scale(1.05);
 }
@@ -333,63 +203,12 @@
 #carrVacio {
   border-radius: 10px;
   border: 2px solid #06b93c;
->>>>>>> Stashed changes
   background-color: #c0ffd3;
   padding: 20px;
+  color: #000;
+  text-align: center;
 }
 
-<<<<<<< Updated upstream
-/* GRUPO DE INPUT Y BOTONES */
-.cantidad-input-group {
-    display: flex;
-    align-items: center;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    overflow: hidden; /* Esto asegura que el borde sea continuo */
-}
-
-.cantidad-input-group .btn {
-    /* Estilos generales para los botones +/- */
-    background-color: #f8f9fa;
-    border: none;
-    padding: 6px 10px;
-    font-weight: bold;
-    color: #333;
-    line-height: 1; /* Para alinear el texto/símbolo */
-    height: 34px; /* Asegurar que la altura coincida con el input */
-}
-
-.cantidad-input-group .btn:hover {
-    background-color: #e2e6ea;
-}
-
-.input-cantidad {
-    /* Modificación del input para integrarse al grupo */
-    width: 40px; /* Ancho más ajustado */
-    height: 34px;
-    text-align: center;
-    border: none; /* Eliminar el borde individual */
-    padding: 0;
-    margin: 0;
-    font-weight: bold;
-}
-
-/* Evitar que la flecha del input de tipo number aparezca en algunos navegadores (Opcional) */
-.input-cantidad::-webkit-outer-spin-button,
-.input-cantidad::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-}
-.input-cantidad {
-    -moz-appearance: textfield;
-}
-
-/* El control de cantidad en la tarjeta */
-.detalle-item.cantidad-control {
-
-    width: 120px; 
-}
-=======
 /* Logos bancos */
 .img-thumbnail {
   background: transparent;
@@ -404,7 +223,7 @@
   transform: scale(1.05);
 }
 
-/* Textos del banco detectado */
+/* Texto del banco detectado */
 #bancoDetectado {
   display: block;
   margin-top: 6px;
@@ -540,4 +359,3 @@ body.modo-oscuro #bancoDetectado {
 body, .producto-card, .section-box, input, .btn, #total {
   transition: background-color 0.3s, color 0.3s, border-color 0.3s;
 }
->>>>>>> Stashed changes

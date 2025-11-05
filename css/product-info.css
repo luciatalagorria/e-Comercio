@@ -65,12 +65,11 @@ h2 {
     width: 100%;
 }
 
-<<<<<<< Updated upstream
 #productosRelacionados .card:hover {
     transform: scale(1.03);
 }
 
-=======
+
 #productosRelacionados .producto {
     background-color: #fff;
     border-radius: 10px;
@@ -121,7 +120,6 @@ body.dark-mode #productosRelacionados .producto {
     box-shadow: 0 2px 8px rgba(255,255,255,0.1);
 }
 
->>>>>>> Stashed changes
 /* Responsivo */
 @media screen and (max-width: 1024px) {
     #productoContainer {
@@ -147,7 +145,6 @@ body.dark-mode #productosRelacionados .producto {
     #productosRelacionados .producto {
         flex: 0 0 auto;
     }
-<<<<<<< Updated upstream
 }
 
 /* ---- Estilos adicionales de Santiago ---- */
@@ -180,6 +177,3 @@ body.dark-mode #productosRelacionados .producto {
     font-size: 24px;
     margin-bottom: 20px;
 }
-=======
-}
->>>>>>> Stashed changes
