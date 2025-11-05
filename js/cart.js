@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 document.addEventListener("DOMContentLoaded", () => {
   const containerCarrito = document.getElementById("containerCarrito");
   const carrVacio = document.getElementById("carrVacio");
@@ -179,3 +180,158 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 });
+=======
+// --------------------------
+// 🛒 CART.JS - ENTREGA 7
+// --------------------------
+
+
+document.addEventListener("DOMContentLoaded", () => {
+    const subtotalElement = document.getElementById("subtotal");
+    const costoEnvioElement = document.getElementById("costoEnvio");
+    const totalElement = document.getElementById("total");
+    const finalizarCompraBtn = document.getElementById("finalizarCompraBtn");
+    const tipoEnvioRadios = document.querySelectorAll('input[name="tipoEnvio"]');
+    const compraExitosaModal = new bootstrap.Modal(document.getElementById('compraExitosaModal'));
+
+
+    // 🧮 Productos simulados (podés reemplazarlos por tu JSON o variables del proyecto)
+    let productos = [
+        { nombre: "Producto A", costo: 100, cantidad: 1 },
+        { nombre: "Producto B", costo: 50, cantidad: 2 }
+    ];
+
+
+    // --------------------------
+    // 🔹 Cálculo de costos
+    // --------------------------
+    function calcularSubtotal() {
+        return productos.reduce((acc, p) => acc + (p.costo * p.cantidad), 0);
+    }
+
+
+    function calcularCostoEnvio(subtotal) {
+        const envioSeleccionado = document.querySelector('input[name="tipoEnvio"]:checked');
+        if (!envioSeleccionado) return 0;
+        return subtotal * parseFloat(envioSeleccionado.value);
+    }
+
+
+    function actualizarCostos() {
+        const subtotal = calcularSubtotal();
+        const costoEnvio = calcularCostoEnvio(subtotal);
+        const total = subtotal + costoEnvio;
+
+
+        subtotalElement.textContent = subtotal.toFixed(2);
+        costoEnvioElement.textContent = costoEnvio.toFixed(2);
+        totalElement.textContent = total.toFixed(2);
+    }
+
+
+    tipoEnvioRadios.forEach(radio => {
+        radio.addEventListener("change", actualizarCostos);
+    });
+
+
+    actualizarCostos();
+
+
+    // --------------------------
+    // ✅ Validaciones
+    // --------------------------
+    function validarCampos() {
+        const departamento = document.getElementById("departamento").value.trim();
+        const localidad = document.getElementById("localidad").value.trim();
+        const calle = document.getElementById("calle").value.trim();
+        const numero = document.getElementById("numero").value.trim();
+        const esquina = document.getElementById("esquina").value.trim();
+
+
+        // Dirección
+        if (!departamento || !localidad || !calle || !numero || !esquina) {
+            alert("⚠️ Complete todos los campos de dirección de envío.");
+            return false;
+        }
+
+
+        // Tipo de envío
+        const envioSeleccionado = document.querySelector('input[name="tipoEnvio"]:checked');
+        if (!envioSeleccionado) {
+            alert("⚠️ Debe seleccionar un tipo de envío.");
+            return false;
+        }
+
+
+        // Cantidades
+        for (let producto of productos) {
+            if (!producto.cantidad || producto.cantidad <= 0) {
+                alert(`⚠️ La cantidad del producto "${producto.nombre}" debe ser mayor a 0.`);
+                return false;
+            }
+        }
+
+
+        // Forma de pago
+        const formaPagoSeleccionada = document.querySelector('input[name="formaPago"]:checked');
+        if (!formaPagoSeleccionada) {
+            alert("⚠️ Seleccione una forma de pago.");
+            return false;
+        }
+
+
+        // Validación según forma de pago
+        if (formaPagoSeleccionada.value === "tarjeta") {
+            const numeroTarjeta = document.getElementById("numeroTarjeta").value.trim();
+            const vencimiento = document.getElementById("vencimiento").value.trim();
+            const cvv = document.getElementById("cvv").value.trim();
+
+
+            if (!numeroTarjeta || !vencimiento || !cvv) {
+                alert("⚠️ Complete todos los campos de la tarjeta de crédito.");
+                return false;
+            }
+            if (numeroTarjeta.length < 13 || numeroTarjeta.length > 16) {
+                alert("⚠️ El número de tarjeta debe tener entre 13 y 16 dígitos.");
+                return false;
+            }
+        }
+
+
+        if (formaPagoSeleccionada.value === "transferencia") {
+            const numeroCuenta = document.getElementById("numeroCuenta").value.trim();
+            if (!numeroCuenta) {
+                alert("⚠️ Ingrese un número de cuenta para la transferencia bancaria.");
+                return false;
+            }
+        }
+
+
+        return true;
+    }
+
+
+    // --------------------------
+    // 💳 Evento Finalizar Compra
+    // --------------------------
+    finalizarCompraBtn.addEventListener("click", () => {
+        if (validarCampos()) {
+            compraExitosaModal.show();
+        }
+    });
+
+
+    // --------------------------
+    // 📦 (Opcional) Actualización dinámica de cantidades
+    // --------------------------
+    // Si tu HTML tiene inputs con clase .cantidad-producto, esto actualizará el subtotal en vivo.
+    document.querySelectorAll(".cantidad-producto").forEach((input, index) => {
+        input.addEventListener("input", () => {
+            productos[index].cantidad = parseInt(input.value) || 0;
+            actualizarCostos();
+        });
+    });
+});
+
+
+>>>>>>> Stashed changes
