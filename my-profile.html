@@ -8,6 +8,7 @@
   <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/my-profile.css">
   <style>
     .bd-placeholder-img {
       font-size: 1.125rem;
@@ -48,20 +49,52 @@
           </li>
           <li class="nav-item">
           </li>
-          <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
-              <div id="MODO-OSCURO"></div>
-              </ul>
-        </ul>
+         <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="fa fa-user"></i><span id="usuario-nav"></span>
+            </a
+             
       </div>
     </div>
   </nav>
-  <main>
-    <div class="container">
-      <div class="alert alert-danger text-center" role="alert">
-        <h4 class="alert-heading">Funcionalidad en desarrollo</h4>
-      </div>
+ <main class="container my-5">
+  <h2 class="text-center text-warning mb-4">MI PERFIL</h2>
+  <div class="row justify-content-center align-items-start">
+    <!-- Datos -->
+    <div class="col-md-6">
+      <form id="profileForm">
+        <div class="mb-3">
+          <label for="name" class="form-label text-warning fw-bold">Nombre</label>
+          <input type="text" class="form-control" id="name" required>
+        </div>
+        <div class="mb-3">
+          <label for="surname" class="form-label text-warning fw-bold">Apellido</label>
+          <input type="text" class="form-control" id="surname" required>
+        </div>
+        <div class="mb-3">
+          <label for="phone" class="form-label text-warning fw-bold">Teléfono</label>
+          <input type="tel" class="form-control" id="phone">
+        </div>
+        <div class="mb-3">
+          <label for="contenedor-email" class="form-label text-warning fw-bold">Email</label>
+          <input type="email" class="form-control" id="contenedor-email" readonly>
+        </div>
+        <button type="submit" class="btn btn-primary mt-2">Guardar Cambios</button>
+      </form>
     </div>
-  </main>
+
+    <!-- Imagen -->
+    <div class="col-md-4 text-center">
+        <img id="profileImage" src="img/imagenXDefecto.png" alt="Foto de perfil"
+     class="rounded-circle mb-3 " width="150" height="150">
+        <div class="d-flex flex-column aling-items-center" >
+          <input type="file" id="imageInput" accept="image/*" class="d-none">
+          <button type="button" class="btn btn-primary mb-2" id="changePhotoBtn">Cambiar foto</button>
+          <button type="button" class="btn btn-secondary" id="removePhotoBtn">Quitar</button>
+        </div>
+      </div>
+  </div>
+</main>
   <footer class="text-muted">
     <div class="container">
       <p class="float-end">

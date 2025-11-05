@@ -1,0 +1,210 @@
+/* CONTENEDOR GENERAL */
+#containerCarrito {
+  font-family:  Anek Devanagari, sans-serif;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  padding: 25px;
+}
+
+#productos-en-carrito {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Espacio entre las tarjetas de producto */
+}
+
+.producto-card {
+    display: flex; 
+    align-items: center;
+    justify-content: space-between;
+    background-color: #ffffff; /* Fondo claro para la tarjeta */
+    border-radius: 8px;
+    padding: 15px 20px;
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05); /* Sombra */
+}
+
+
+/* Imagen y nombre */
+
+.producto-info {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    width: 35%; 
+}
+
+.card-img-producto {
+    width: 100px; 
+    height: auto;
+    border-radius: 4px;
+}
+
+.nombre-producto {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #f09200;
+}
+
+
+/* Seccion de detalles y acciones */
+
+.producto-detalles {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 65%;
+    gap: 10px;
+}
+
+.detalle-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+    width: calc(100% / 3); 
+    text-align: center;
+}
+
+.detalle-etiqueta {
+    font-size: 0.9rem;
+    color: #6c757d; 
+    margin-bottom: 5px;
+}
+
+.detalle-valor {
+    font-weight: 600;
+    color: #5D96CF;
+    font-size: 1.1rem;
+}
+
+/* Subtotal */
+.subtotal-valor {
+    color: #fafafa;
+    background-color: #f09200;
+  border: none;
+  border-radius: 8px;
+  padding: 6px 12px;
+  font-weight: bold;
+  transition: 0.2s;
+  gap: 8px;
+}
+
+
+/* Total y Finalizar compra */
+.total-container {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+#total {
+   
+    background-color: #ffffff;
+    color: #000000;
+    font-weight: bold;
+    padding: 12px 24px;
+    border-radius: 8px;
+    margin: 0;
+    text-align: left; 
+    line-height: 1;
+}
+
+.btn-success {
+    font-family: anek devanagari, sans-serif;
+    margin-left: 0; 
+    background-color: #5D96CF;
+}
+
+
+/*  CANTIDAD  */
+.input-cantidad {
+  width: 70px;
+  text-align: center;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  padding: 4px;
+  font-weight: bold;
+}
+
+
+
+/*  BOTÓN ELIMINAR  */
+.btn-eliminar {
+  margin-top: 6px;
+  background-color: #ffffff;
+  color: #ff4d4d;
+  border: 1px solid #ff4d4d;
+  border-radius: 6px;
+  padding: 4px 8px;
+  font-weight: bold;
+  transition: 0.2s;
+}
+
+.btn-eliminar:hover {
+  background-color: #e60000;
+  transform: scale(1.05);
+}
+
+
+/*  CARRITO VACÍO  */
+#carrVacio {
+  border-radius: 10px;
+  border: 2px solid #06b93c;
+  border-color: #06b93c;
+  background-color: #c0ffd3;
+  padding: 20px;
+}
+
+/* GRUPO DE INPUT Y BOTONES */
+.cantidad-input-group {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    overflow: hidden; /* Esto asegura que el borde sea continuo */
+}
+
+.cantidad-input-group .btn {
+    /* Estilos generales para los botones +/- */
+    background-color: #f8f9fa;
+    border: none;
+    padding: 6px 10px;
+    font-weight: bold;
+    color: #333;
+    line-height: 1; /* Para alinear el texto/símbolo */
+    height: 34px; /* Asegurar que la altura coincida con el input */
+}
+
+.cantidad-input-group .btn:hover {
+    background-color: #e2e6ea;
+}
+
+.input-cantidad {
+    /* Modificación del input para integrarse al grupo */
+    width: 40px; /* Ancho más ajustado */
+    height: 34px;
+    text-align: center;
+    border: none; /* Eliminar el borde individual */
+    padding: 0;
+    margin: 0;
+    font-weight: bold;
+}
+
+/* Evitar que la flecha del input de tipo number aparezca en algunos navegadores (Opcional) */
+.input-cantidad::-webkit-outer-spin-button,
+.input-cantidad::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+.input-cantidad {
+    -moz-appearance: textfield;
+}
+
+/* El control de cantidad en la tarjeta */
+.detalle-item.cantidad-control {
+
+    width: 120px; 
+}

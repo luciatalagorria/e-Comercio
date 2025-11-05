@@ -66,11 +66,8 @@ h2 {
 }
 
 #productosRelacionados .card:hover {
-  transform: scale(1.03);
+    transform: scale(1.03);
 }
-
-
-
 
 /* Responsivo */
 @media screen and (max-width: 1024px) {
@@ -99,6 +96,8 @@ h2 {
     }
 }
 
+/* ---- Estilos adicionales de Santiago ---- */
+
 #tituloComentarios {
     color: #f19305;
     font-weight: 700;
@@ -119,7 +118,6 @@ h2 {
     background-color: #fff;
     cursor: pointer;
     transition: transform 0.2s, box-shadow 0.2s;
-    
 }
 
 #dejaTuCalificacion {
