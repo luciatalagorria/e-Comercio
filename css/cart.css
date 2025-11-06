@@ -1,6 +1,6 @@
 /* ------------------------------------------------------
    🎨 MODO OSCURO + DISEÑO CARRITO (Entrega 7)
-   Versión unificada y corregida
+   ✅ Versión final corregida y validada
 ------------------------------------------------------- */
 
 /* CONTENEDOR GENERAL */
@@ -10,6 +10,7 @@
   border-radius: 12px;
   box-shadow: 0 4px 15px rgba(0,0,0,0.1);
   padding: 25px;
+  transition: background-color 0.4s, color 0.4s;
 }
 
 /* PRODUCTOS EN CARRITO */
@@ -24,12 +25,12 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: #ffffff;
+  background-color: #fff;
   border-radius: 8px;
   padding: 15px 20px;
   border: 1px solid #ddd;
   box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-  transition: background-color 0.3s, border-color 0.3s;
+  transition: background-color 0.3s, border-color 0.3s, color 0.3s;
 }
 
 /* Imagen y nombre */
@@ -79,29 +80,26 @@
   font-weight: 600;
   color: #5D96CF;
   font-size: 1.1rem;
-  transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
 }
 
-/* Bloques de secciones (envío, dirección, pago, etc.) */
+/* Secciones (envío, dirección, pago, etc.) */
 .section-box {
-  background-color: #ffffff;
+  background-color: #fff;
   border-radius: 8px;
   padding: 15px 20px;
   margin-bottom: 20px;
   box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-  transition: background-color 0.3s, color 0.3s;
+  transition: background-color 0.3s, color 0.3s, border-color 0.3s;
 }
 
 /* Subtotal */
 .subtotal-valor {
-  color: #fafafa;
+  color: #fff;
   background-color: #f09200;
   border: none;
   border-radius: 8px;
   padding: 6px 12px;
   font-weight: bold;
-  transition: 0.2s;
-  gap: 8px;
 }
 
 /* Total y Finalizar compra */
@@ -114,20 +112,20 @@
 }
 
 #total {
-  background-color: #ffffff;
-  color: #000000;
+  background-color: #fff;
+  color: #000;
   font-weight: bold;
   padding: 12px 24px;
   border-radius: 8px;
-  margin: 0;
   text-align: left;
   line-height: 1;
+  border: 1px solid #ddd;
   transition: background-color 0.3s, color 0.3s;
 }
 
+/* Botón Finalizar compra */
 .btn-success {
   font-family: 'Anek Devanagari', sans-serif;
-  margin-left: 0;
   background-color: #5D96CF;
   border: none;
   color: white;
@@ -172,19 +170,10 @@
   background-color: transparent;
 }
 
-.input-cantidad::-webkit-outer-spin-button,
-.input-cantidad::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-.input-cantidad {
-  -moz-appearance: textfield;
-}
-
 /* BOTÓN ELIMINAR */
 .btn-eliminar {
   margin-top: 6px;
-  background-color: #ffffff;
+  background-color: transparent;
   color: #ff4d4d;
   border: 1px solid #ff4d4d;
   border-radius: 6px;
@@ -234,7 +223,8 @@
 /* ----------------------------------------
    🌙 MODO OSCURO
 ---------------------------------------- */
-body.dark-mode, body.modo-oscuro {
+body.dark-mode,
+body.modo-oscuro {
   background-color: #0e141b;
   color: #e6eef6;
 }
@@ -247,7 +237,7 @@ body.modo-oscuro #containerCarrito {
   color: #e6eef6;
 }
 
-/* Secciones principales */
+/* Secciones */
 body.dark-mode .section-box,
 body.modo-oscuro .section-box {
   background-color: #1c2732;
@@ -260,26 +250,15 @@ body.dark-mode .producto-card,
 body.modo-oscuro .producto-card {
   background-color: #1c2732;
   border-color: #2e3a46;
+  color: #e6eef6;
 }
 
-/* Detalles */
-body.dark-mode .detalle-etiqueta,
-body.modo-oscuro .detalle-etiqueta {
-  color: #a6b2c4;
-}
-
-/* Subtotales y totales */
-body.dark-mode .subtotal-valor,
-body.modo-oscuro .subtotal-valor {
-  background-color: #f09200;
-  color: #fff;
-}
-
+/* Total */
 body.dark-mode #total,
 body.modo-oscuro #total {
   background-color: #131a22;
   color: #ffffff;
-  border: 1px solid #293542;
+  border: 1px solid #2b3a45;
 }
 
 /* Inputs */
@@ -292,8 +271,8 @@ body.modo-oscuro input {
 
 body.dark-mode input:focus,
 body.modo-oscuro input:focus {
-  outline: none;
   border-color: #5D96CF;
+  outline: none;
 }
 
 /* Botones */
@@ -308,9 +287,9 @@ body.modo-oscuro .btn-success:hover {
   background-color: #457bb5;
 }
 
+/* Botón eliminar */
 body.dark-mode .btn-eliminar,
 body.modo-oscuro .btn-eliminar {
-  background-color: transparent;
   color: #ff6666;
   border-color: #ff6666;
 }
@@ -321,7 +300,7 @@ body.modo-oscuro .btn-eliminar:hover {
   color: #fff;
 }
 
-/* Campos de cantidad */
+/* Cantidad */
 body.dark-mode .cantidad-input-group,
 body.modo-oscuro .cantidad-input-group {
   background-color: #1c2732;
@@ -332,13 +311,6 @@ body.dark-mode .cantidad-input-group .btn,
 body.modo-oscuro .cantidad-input-group .btn {
   background-color: #131a22;
   color: #e6eef6;
-}
-
-/* Imágenes */
-body.dark-mode .img-thumbnail,
-body.modo-oscuro .img-thumbnail {
-  filter: brightness(1.1);
-  border-color: #3a4754;
 }
 
 /* Carrito vacío */
@@ -353,6 +325,13 @@ body.modo-oscuro #carrVacio {
 body.dark-mode #bancoDetectado,
 body.modo-oscuro #bancoDetectado {
   color: #a6b2c4;
+}
+
+/* Imágenes */
+body.dark-mode .img-thumbnail,
+body.modo-oscuro .img-thumbnail {
+  filter: brightness(1.1);
+  border-color: #3a4754;
 }
 
 /* Transiciones globales */
