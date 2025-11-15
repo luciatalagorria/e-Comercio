@@ -13,6 +13,7 @@ const imagenesEl = document.getElementById("imagenesProducto");
 const relacionadosEl = document.getElementById("productosRelacionados");
 const precioProductoEl = document.getElementById("precioProducto");
 const monedaProductoEl = document.getElementById("monedaProducto");
+const contenedorComentarios = document.getElementById("product-comments");
 
 // Función principal para cargar producto
 function cargarProducto(id, cat) {
@@ -149,40 +150,82 @@ function getStars(score) {
   return starsHTML;
 }
 
-const contenedorComentarios = document.getElementById("product-comments");
+function agregarComentarioAlDOM(comment) {
+  const comentario = document.createElement("div");
+  comentario.className = "mb-3 border-bottom pb-2";
+  comentario.innerHTML = `
+    <strong>${comment.user}</strong> - <span class="text-muted">${comment.dateTime}</span>
+    <div>${getStars(comment.score)}</div>
+    <p>${comment.description}</p>
+  `;
+  contenedorComentarios.appendChild(comentario);
+}
+
 
 // 🔹 Nueva función para cargar comentarios dinámicamente
 function cargarComentarios(id) {
-  contenedorComentarios.innerHTML = ""; // Limpia los comentarios anteriores
+  contenedorComentarios.innerHTML = ""; 
 
+  // 1️⃣ Cargar comentarios desde la API
   fetch(`https://japceibal.github.io/emercado-api/products_comments/${id}.json`)
     .then(res => res.json())
-    .then(data => {
-      if (!data || data.length === 0) {
-        contenedorComentarios.innerHTML = "<p class='text-muted'>No hay comentarios para este producto.</p>";
-        return;
-      }
+    .then(apiComments => {
 
-      data.forEach(comment => {
-        const comentario = document.createElement("div");
-        comentario.className = "mb-3 border-bottom pb-2";
-        comentario.innerHTML = `
-          <strong>${comment.user}</strong> - <span class="text-muted">${comment.dateTime}</span>
-          <div>${getStars(comment.score)}</div>
-          <p>${comment.description}</p>
-        `;
-        contenedorComentarios.appendChild(comentario);
-      });
+      // Renderizar comentarios API
+      apiComments.forEach(c => agregarComentarioAlDOM(c));
+
+      // 2️⃣ Cargar comentarios guardados por el usuario
+      const guardados = JSON.parse(localStorage.getItem("comentarios_" + id)) || [];
+
+      guardados.forEach(c => agregarComentarioAlDOM(c));
     })
     .catch(error => {
       console.error("Error al cargar los comentarios:", error);
       contenedorComentarios.innerHTML = "<p class='text-danger'>Error al cargar los comentarios.</p>";
     });
+}
 
+  // 🔵 Botón enviar comentario
+const btnEnviarComentario = document.getElementById("btnEnviarComentario");
+const textareaComentario = document.getElementById("rating-text");
+
+btnEnviarComentario.addEventListener("click", () => {
+  
+  if (selectedRating === 0) {
+    alert("Debes seleccionar una calificación con estrellas.");
+    return;
   }
 
+  if (textareaComentario.value.trim() === "") {
+    alert("El comentario no puede estar vacío.");
+    return;
+  }
+
+  // Crear comentario nuevo
+  const nuevoComentario = {
+    user: localStorage.getItem("usuario") || "Usuario Anónimo",
+    description: textareaComentario.value.trim(),
+    score: selectedRating,
+    dateTime: obtenerFechaHora()
+  };
+
+  // Guardar en localStorage según producto
+  let comentariosGuardados = JSON.parse(localStorage.getItem("comentarios_" + productoId)) || [];
+
+  comentariosGuardados.push(nuevoComentario);
+
+  localStorage.setItem("comentarios_" + productoId, JSON.stringify(comentariosGuardados));
+
+  // Agregarlo visualmente debajo
+  agregarComentarioAlDOM(nuevoComentario);
+
+  // Resetear campos
+  textareaComentario.value = "";
+  selectedRating = 0;
+  highlightStars(0);
+});
+
    // Funcionalidad del botón "Comprar"
-const btnComprar = document.getElementById("btnComprar");
 
 btnComprar.addEventListener("click", () => {
   const producto = {
@@ -205,3 +248,19 @@ btnComprar.addEventListener("click", () => {
   localStorage.setItem("carrito", JSON.stringify(carrito));
   window.location.href = "cart.html";
 });
+
+
+// Agregar comentarios //
+function obtenerFechaHora() {
+  const ahora = new Date();
+  
+  const año = ahora.getFullYear();
+  const mes = String(ahora.getMonth() + 1).padStart(2, '0');
+  const dia = String(ahora.getDate()).padStart(2, '0');
+
+  const hora = String(ahora.getHours()).padStart(2, '0');
+  const minutos = String(ahora.getMinutes()).padStart(2, '0');
+  const segundos = String(ahora.getSeconds()).padStart(2, '0');
+
+  return `${año}-${mes}-${dia} ${hora}:${minutos}:${segundos}`;
+}

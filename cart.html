@@ -66,7 +66,9 @@
     <h2 id="tituloCarrito" class="text-center fw-bold text-warning mb-4">Carrito de Compras</h2>
 
     <div id="containerCarrito"></div>
-    <div id="modalCompra" class="compra-modal d-none">
+
+    <!-- MODAL PARA FINALIZAR COMPRA -->
+<div id="modalCompra" class="compra-modal d-none">
   <div class="compra-contenido">
 
     <h2 class="titulo-seccion">Tipo de envío</h2>
@@ -76,19 +78,33 @@
       <label><input type="radio" name="envio" value="standard"> Standard — 12 a 15 días (5%)</label>
     </div>
 
-    <h2 class="titulo-seccion mt-3">Dirección de envío</h2>
+     <h2 class="titulo-seccion mt-3">Dirección de envío</h2>
     <div class="direccion-grid">
-      <select id="departamento" class="form-select">
+      <select id="departamentoSelect" class="form-select">
         <option value="">Seleccione un departamento</option>
-        <option>Montevideo</option>
-        <option>Canelones</option>
-        <option>Maldonado</option>
+        <option value="Montevideo">Montevideo</option>
+        <option value="Canelones">Canelones</option>
+        <option value="Maldonado">Maldonado</option>
+        <option value="RioNegro">Rio Negro</option>
+        <option value="CerroLargo">Cerro Largo</option>
+        <option value="Colonia">Colonia</option>
+        <option value="Durazno">Durazno</option>
+        <option value="Flores">Flores</option>
+        <option value="Florida">Florida</option>
+        <option value="Lavalleja">Lavalleja</option>
+        <option value="Paysandu">Paysandú</option>
+        <option value="Rivera">Rivera</option>
+        <option value="Rocha">Rocha</option>
+        <option value="Salto">Salto</option>
+        <option value="SanJose">San José</option>
+        <option value="Soriano">Soriano</option>
+        <option value="Tacuarembo">Tacuarembó</option>
+        <option value="TreintaYTres">Treinta y Tres</option>
       </select>
 
-      <select id="localidad" class="form-select">
+      <select id="ciudadSelect" class="form-select">
         <option value="">Seleccione una localidad</option>
       </select>
-
       <input id="calle" class="form-control" placeholder="Calle">
       <input id="numero" class="form-control" placeholder="Número">
       <input id="esquina" class="form-control" placeholder="Esquina">

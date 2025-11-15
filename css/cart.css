@@ -207,7 +207,12 @@
 .detalle-item.cantidad-control {
 
     width: 120px; 
+
 }
+
+/* ──────────────── */
+/* MODAL OVERLAY    */
+/* ──────────────── */
 
 .compra-modal {
   position: fixed;
