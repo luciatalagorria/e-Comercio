@@ -208,3 +208,144 @@
 
     width: 120px; 
 }
+
+/* MODAL OVERLAY    */
+
+.compra-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(4px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  z-index: 9999;
+}
+
+/* Ocultar clase desde JS */
+.d-none {
+  display: none !important;
+}
+
+/* CONTENIDO MODAL  */
+
+.compra-contenido {
+  width: 100%;
+  max-width: 480px;
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 28px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+  animation: aparecer 0.25s ease-out;
+}
+
+/* Animación de entrada */
+@keyframes aparecer {
+  from {
+    opacity: 0;
+    transform: translateY(-15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* TITULOS          */
+
+.titulo-seccion {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #222;
+}
+
+/* Botones Radio */
+
+.grupo-radio label {
+  display: block;
+  font-size: 15px;
+  margin-bottom: 6px;
+  cursor: pointer;
+}
+
+.grupo-radio input[type="radio"] {
+  margin-right: 6px;
+}
+
+/* Campos de texto  */
+
+.form-control, .form-select {
+  width: 100%;
+  padding: 10px 12px;
+  font-size: 15px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.form-control:focus,
+.form-select:focus {
+  border-color: #0d6efd;
+  outline: none;
+  box-shadow: 0 0 3px rgba(13, 110, 253, 0.4);
+}
+
+/* Direccion de grid   */
+
+.direccion-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+}
+
+/* Layout responsive */
+@media (min-width: 480px) {
+  .direccion-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .direccion-grid input:nth-child(3),
+  .direccion-grid input:nth-child(4),
+  .direccion-grid input:nth-child(5) {
+    grid-column: span 2;
+  }
+}
+
+/* Campos extra */
+
+.pago-extra {
+  margin-top: 10px;
+}
+
+/* Costos */
+
+#subtotalCompra,
+#costoEnvio,
+#totalFinal {
+  font-weight: 600;
+}
+
+/* Botones modals  */
+
+#btnConfirmarCompra {
+  font-size: 17px;
+  padding: 12px;
+  border-radius: 10px;
+}
+
+#btnCerrarModal {
+  font-size: 16px;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: #6c757d;
+  color: white;
+}
+
+#btnCerrarModal:hover {
+  background-color: #5a6268;
+}
