@@ -66,6 +66,59 @@
     <h2 id="tituloCarrito" class="text-center fw-bold text-warning mb-4">Carrito de Compras</h2>
 
     <div id="containerCarrito"></div>
+    <div id="modalCompra" class="compra-modal d-none">
+  <div class="compra-contenido">
+
+    <h2 class="titulo-seccion">Tipo de envío</h2>
+    <div class="grupo-radio">
+      <label><input type="radio" name="envio" value="premium"> Premium — 2 a 5 días (15%)</label>
+      <label><input type="radio" name="envio" value="express"> Express — 5 a 8 días (7%)</label>
+      <label><input type="radio" name="envio" value="standard"> Standard — 12 a 15 días (5%)</label>
+    </div>
+
+    <h2 class="titulo-seccion mt-3">Dirección de envío</h2>
+    <div class="direccion-grid">
+      <select id="departamento" class="form-select">
+        <option value="">Seleccione un departamento</option>
+        <option>Montevideo</option>
+        <option>Canelones</option>
+        <option>Maldonado</option>
+      </select>
+
+      <select id="localidad" class="form-select">
+        <option value="">Seleccione una localidad</option>
+      </select>
+
+      <input id="calle" class="form-control" placeholder="Calle">
+      <input id="numero" class="form-control" placeholder="Número">
+      <input id="esquina" class="form-control" placeholder="Esquina">
+    </div>
+
+    <h2 class="titulo-seccion mt-3">Forma de pago</h2>
+    <div class="grupo-radio">
+      <label><input type="radio" name="pago" value="tarjeta"> Tarjeta de crédito</label>
+      <label><input type="radio" name="pago" value="transferencia"> Transferencia bancaria</label>
+    </div>
+
+    <div id="pago-tarjeta" class="pago-extra d-none">
+      <input id="tarjeta-num" class="form-control" placeholder="Número de tarjeta">
+      <input id="tarjeta-nombre" class="form-control" placeholder="Nombre del titular">
+    </div>
+
+    <div id="pago-transferencia" class="pago-extra d-none">
+      <input id="cuenta-bancaria" class="form-control" placeholder="Número de cuenta bancaria">
+    </div>
+
+    <h2 class="titulo-seccion mt-3">Costos</h2>
+    <p>Subtotal: <span id="subtotalCompra"></span></p>
+    <p>Costo envío: <span id="costoEnvio"></span></p>
+    <p><b>Total: <span id="totalFinal"></span></b></p>
+
+    <button id="btnConfirmarCompra" class="btn btn-success w-100 mt-3">Confirmar compra</button>
+    <button id="btnCerrarModal" class="btn btn-secondary w-100 mt-2">Cancelar</button>
+
+  </div>
+</div>
 
     <div id="carrVacio" class="alert alert-info text-center mt-5 d-none">
       <h5>Tu carrito está vacío 🛒</h5>

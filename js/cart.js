@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
     return acc + subtotal;
   }, 0);
   
-  // ⬇ Aplicar el formato
+  //  Aplicar el formato
   return formatUYU(totalNumerico); 
 }
 
@@ -178,4 +178,75 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   });
+});
+
+// ABRIR MODAL
+document.querySelector(".btn-success").addEventListener("click", () => {
+  document.getElementById("modalCompra").classList.remove("d-none");
+
+  document.getElementById("subtotalCompra").textContent = `${calcularTotal(carrito, tasaUSDaUYU)} UYU`;
+});
+
+// CERRAR MODAL
+document.getElementById("btnCerrarModal").addEventListener("click", () => {
+  document.getElementById("modalCompra").classList.add("d-none");
+});
+
+// CAMBIAR FORMA DE PAGO
+document.querySelectorAll("input[name='pago']").forEach(p => {
+  p.addEventListener("change", () => {
+    document.getElementById("pago-tarjeta").classList.add("d-none");
+    document.getElementById("pago-transferencia").classList.add("d-none");
+
+    if (p.value === "tarjeta") {
+      document.getElementById("pago-tarjeta").classList.remove("d-none");
+    }
+
+    if (p.value === "transferencia") {
+      document.getElementById("pago-transferencia").classList.remove("d-none");
+    }
+  });
+});
+
+// CONFIRMAR COMPRA
+document.getElementById("btnConfirmarCompra").addEventListener("click", () => {
+
+  // VALIDACIONES
+  const envio = document.querySelector("input[name='envio']:checked");
+  const departamento = document.getElementById("departamento").value;
+  const localidad = document.getElementById("localidad").value;
+  const calle = document.getElementById("calle").value;
+  const numero = document.getElementById("numero").value;
+  const esquina = document.getElementById("esquina").value;
+  const pago = document.querySelector("input[name='pago']:checked");
+
+  if (!envio) return alert("Debe seleccionar un tipo de envío.");
+  if (!departamento || !localidad || !calle || !numero || !esquina)
+      return alert("Debe completar todos los datos de dirección.");
+  if (!pago) return alert("Debe seleccionar una forma de pago.");
+
+  // Validar campos de forma de pago
+  if (pago.value === "tarjeta") {
+    if (!document.getElementById("tarjeta-num").value ||
+        !document.getElementById("tarjeta-nombre").value)
+      return alert("Debe completar los datos de la tarjeta.");
+  }
+
+  if (pago.value === "transferencia") {
+    if (!document.getElementById("cuenta-bancaria").value)
+      return alert("Debe ingresar el número de cuenta bancaria.");
+  }
+
+  // VALIDAR CANTIDADES DEL CARRITO
+  for (let producto of carrito) {
+    if (!producto.quantity || producto.quantity <= 0)
+      return alert("La cantidad de un producto es inválida.");
+  }
+
+  // SI TODO ESTÁ CORRECTO:
+  alert("🎉 ¡Compra realizada con éxito!");
+
+  // VACIAR CARRITO
+  localStorage.removeItem("carrito");
+  location.reload();
 });

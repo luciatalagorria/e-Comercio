@@ -101,6 +101,7 @@ function renderRelacionados(productoActual, todosProductos) {
 
 // Inicializar la página
 cargarProducto(productoId, categoria);
+cargarComentarios(productoId);
 
 //////////////////////////////////////////
 // ⭐⭐⭐ Lógica de las estrellas de calificación ⭐⭐⭐
@@ -181,6 +182,7 @@ function cargarComentarios(id) {
   }
 
    // Funcionalidad del botón "Comprar"
+const btnComprar = document.getElementById("btnComprar");
 
 btnComprar.addEventListener("click", () => {
   const producto = {
