@@ -1,4 +1,3 @@
-
 document.addEventListener("DOMContentLoaded", () => {
   // Referencias DOM
   const containerCarrito = document.getElementById("containerCarrito");
@@ -302,7 +301,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // Si todo ok, mostrar éxito (ficticio) y vaciar carrito
-    alert("🎉 Compra realizada con éxito. Gracias por su compra.");
+    alert("🎉 Compra realizada con éxito (envío ficticio). Gracias por su compra.");
     localStorage.removeItem("carrito");
     // cerrar modal y re-render
     modal && modal.classList.add("d-none");
@@ -312,7 +311,6 @@ document.addEventListener("DOMContentLoaded", () => {
   // Render inicial
   renderCarrito();
 });
-
 const ciudadesPorDepartamento = {
   Artigas: ["Artigas", "Bella Unión",],
   Canelones: ["Canelones", "Las Piedras", "La Paz", "Ciudad de la Costa", "Pando", "Barros Blancos", "Progreso", "Santa Lucía",],
@@ -334,7 +332,6 @@ const ciudadesPorDepartamento = {
   Tacuarembo: ["Tacuarembó", "San Gregorio de Polanco"],
   TreintaYTres: ["Treinta y Tres"]
 };
-
 
 const departamentoSelect = document.getElementById("departamentoSelect");
 const ciudadSelect = document.getElementById("ciudadSelect");

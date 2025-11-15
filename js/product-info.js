@@ -150,9 +150,19 @@ function getStars(score) {
   return starsHTML;
 }
 
+function agregarComentarioAlDOM(comment) {
+  const comentario = document.createElement("div");
+  comentario.className = "mb-3 border-bottom pb-2";
+  comentario.innerHTML = `
+    <strong>${comment.user}</strong> - <span class="text-muted">${comment.dateTime}</span>
+    <div>${getStars(comment.score)}</div>
+    <p>${comment.description}</p>
+  `;
+  contenedorComentarios.appendChild(comentario);
+}
 
 
-// Función para cargar comentarios dinámicamente
+// 🔹 Nueva función para cargar comentarios dinámicamente
 function cargarComentarios(id) {
   contenedorComentarios.innerHTML = ""; 
 
@@ -175,35 +185,7 @@ function cargarComentarios(id) {
     });
 }
 
-
-
-  function agregarComentarioAlDOM(comment) {
-  const comentario = document.createElement("div");
-  comentario.className = "mb-3 border-bottom pb-2";
-  comentario.innerHTML = `
-    <strong>${comment.user}</strong> - <span class="text-muted">${comment.dateTime}</span>
-    <div>${getStars(comment.score)}</div>
-    <p>${comment.description}</p>
-  `;
-  contenedorComentarios.appendChild(comentario);
-}
- 
-
-// Función para enviar un nuevo comentario
-  function obtenerFechaHora() {
-  const ahora = new Date();
-  
-  const año = ahora.getFullYear();
-  const mes = String(ahora.getMonth() + 1).padStart(2, '0');
-  const dia = String(ahora.getDate()).padStart(2, '0');
-
-  const hora = String(ahora.getHours()).padStart(2, '0');
-  const minutos = String(ahora.getMinutes()).padStart(2, '0');
-  const segundos = String(ahora.getSeconds()).padStart(2, '0');
-
-  return `${año}-${mes}-${dia} ${hora}:${minutos}:${segundos}`;
-}
-// 🔵 Botón enviar comentario
+  // 🔵 Botón enviar comentario
 const btnEnviarComentario = document.getElementById("btnEnviarComentario");
 const textareaComentario = document.getElementById("rating-text");
 
@@ -266,3 +248,19 @@ btnComprar.addEventListener("click", () => {
   localStorage.setItem("carrito", JSON.stringify(carrito));
   window.location.href = "cart.html";
 });
+
+
+// Agregar comentarios //
+function obtenerFechaHora() {
+  const ahora = new Date();
+  
+  const año = ahora.getFullYear();
+  const mes = String(ahora.getMonth() + 1).padStart(2, '0');
+  const dia = String(ahora.getDate()).padStart(2, '0');
+
+  const hora = String(ahora.getHours()).padStart(2, '0');
+  const minutos = String(ahora.getMinutes()).padStart(2, '0');
+  const segundos = String(ahora.getSeconds()).padStart(2, '0');
+
+  return `${año}-${mes}-${dia} ${hora}:${minutos}:${segundos}`;
+}

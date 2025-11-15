@@ -4,7 +4,7 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>eMercado - Carrito de compras</title>
+  <title>eMercado - Todo lo que busques está aquí</title>
   <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/font-awesome.min.css" rel="stylesheet">
@@ -16,7 +16,6 @@
 
 <body>
 
-  <!-- NAVBAR -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-1">
     <div class="container">
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -29,7 +28,10 @@
             <a class="nav-link" href="index.html">Inicio</a>
           </li>
           <li class="nav-item">
+
+
             <a class="nav-link active" href="categories.html">Categorías</a>
+
           </li>
           <li class="nav-item">
             <a class="nav-link" href="sell.html">Vender</a>
@@ -37,8 +39,7 @@
           <li class="nav-item">
             <a class="nav-link" href="cart.html">
               <i class="fa fa-shopping-cart position-relative">
-                <span id="notif-badge"
-                  class="position-absolute top-1 start-90 translate-middle badge rounded-pill bg-danger badge-small">
+                <span id="notif-badge" class="position-absolute top-1 start-90 translate-middle badge rounded-pill bg-danger badge-small">
                   0
                   <span class="visually-hidden">cantidad de productos</span>
                 </span>
@@ -46,28 +47,28 @@
             </a>
           </li>
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown"
-              aria-expanded="false">
+            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               <i class="fa fa-user"></i><span id="usuario-nav"></span>
             </a>
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
               <div id="MODO-OSCURO"></div>
               <li><a class="dropdown-item" href="login.html">Iniciar sesión</a></li>
             </ul>
+
           </li>
         </ul>
       </div>
     </div>
   </nav>
 
-  <!-- CONTENIDO PRINCIPAL -->
-  <main class="container mt-4">
-    <h2 class="text-center mb-4 text-warning fw-bold">🛒 Carrito de Compras</h2>
+<main>
+    <div class="container my-5">
+    <h2 id="tituloCarrito" class="text-center fw-bold text-warning mb-4">Carrito de Compras</h2>
 
-    <!-- Contenedor del carrito -->
     <div id="containerCarrito"></div>
 
-    <div id="modalCompra" class="compra-modal d-none">
+    <!-- MODAL PARA FINALIZAR COMPRA -->
+<div id="modalCompra" class="compra-modal d-none">
   <div class="compra-contenido">
 
     <h2 class="titulo-seccion">Tipo de envío</h2>
@@ -77,7 +78,7 @@
       <label><input type="radio" name="envio" value="standard"> Standard — 12 a 15 días (5%)</label>
     </div>
 
-    <h2 class="titulo-seccion mt-3">Dirección de envío</h2>
+     <h2 class="titulo-seccion mt-3">Dirección de envío</h2>
     <div class="direccion-grid">
       <select id="departamentoSelect" class="form-select">
         <option value="">Seleccione un departamento</option>
@@ -104,7 +105,6 @@
       <select id="ciudadSelect" class="form-select">
         <option value="">Seleccione una localidad</option>
       </select>
-
       <input id="calle" class="form-control" placeholder="Calle">
       <input id="numero" class="form-control" placeholder="Número">
       <input id="esquina" class="form-control" placeholder="Esquina">
@@ -140,149 +140,19 @@
       <h5>Tu carrito está vacío 🛒</h5>
       <p>Agrega productos desde la sección de <a href="categories.html" class="alert-link">Categorías</a>.</p>
     </div>
+  </div>
 
-    <!-- Sección Tipo de Envío -->
-    <div class="card mb-3">
-      <div class="card-header bg-light">
-        <h5 class="mb-0">Tipo de Envío</h5>
-      </div>
-      <div class="card-body">
-        <label><input type="radio" name="tipoEnvio" value="0.15"> Premium 2 a 5 días (15%)</label><br>
-        <label><input type="radio" name="tipoEnvio" value="0.07"> Express 5 a 8 días (7%)</label><br>
-        <label><input type="radio" name="tipoEnvio" value="0.05"> Standard 12 a 15 días (5%)</label>
-      </div>
-    </div>
+</main>
 
-    <!-- Sección Dirección de Envío -->
-    <div class="card mb-3">
-      <div class="card-header bg-light">
-        <h5 class="mb-0">Dirección de Envío</h5>
-      </div>
-      <div class="card-body">
-        <div class="row g-3">
-          <div class="col-md-4">
-            <label for="departamento" class="form-label">Departamento</label>
-            <input type="text" class="form-control" id="departamento">
-          </div>
-          <div class="col-md-4">
-            <label for="localidad" class="form-label">Localidad</label>
-            <input type="text" class="form-control" id="localidad">
-          </div>
-          <div class="col-md-4">
-            <label for="calle" class="form-label">Calle</label>
-            <input type="text" class="form-control" id="calle">
-          </div>
-          <div class="col-md-3">
-            <label for="numero" class="form-label">Número</label>
-            <input type="number" class="form-control" id="numero">
-          </div>
-          <div class="col-md-3">
-            <label for="esquina" class="form-label">Esquina</label>
-            <input type="text" class="form-control" id="esquina">
-          </div>
-        </div>
-      </div>
-    </div>
 
-    <!-- Sección Forma de Pago -->
-    <div class="card mb-3">
-      <div class="card-header bg-light">
-        <h5 class="mb-0">Forma de Pago</h5>
-      </div>
-      <div class="card-body">
-        <label><input type="radio" name="formaPago" value="tarjeta"> Tarjeta de crédito</label><br>
-        <label><input type="radio" name="formaPago" value="transferencia"> Transferencia bancaria</label>
-
-        <!-- Logos de tarjetas -->
-        <div class="mt-3 text-center">
-          <p class="fw-bold">Tarjetas admitidas:</p>
-          <div class="d-flex justify-content-center flex-wrap gap-3">
-            <img src="https://www.bbva.com/wp-content/uploads/2019/04/Logo-BBVA.jpg" alt="BBVA" class="img-thumbnail"
-              style="width:100px; height:auto;">
-            <img src="https://www.ort.edu.uy/innovaportal/file/119012/1/banco-santander-uruguay.jpg" alt="Santander"
-              class="img-thumbnail" style="width:100px; height:auto;">
-            <img
-              src="https://is3-ssl.mzstatic.com/image/thumb/Purple122/v4/c7/8e/ef/c78eef87-a703-ac44-1310-9dfa24bbc979/AppIcon-0-0-1x_U007emarketing-0-0-0-10-0-0-sRGB-0-0-0-GLES2_U002c0-512MB-85-220-0-0.png/1200x630wa.png"
-              alt="Prex" class="img-thumbnail" style="width:100px; height:auto;">
-            <img src="https://socioespectacular.com.uy/wp-content/uploads/2017/07/convenio-logo-banco-republica.png"
-              alt="BROU" class="img-thumbnail" style="width:100px; height:auto;">
-          </div>
-        </div>
-
-        <!-- Campos tarjeta -->
-        <div id="pagoTarjeta" class="mt-4" style="display:none;">
-          <div class="row g-2">
-            <div class="col-md-4">
-              <label for="numeroTarjeta" class="form-label">Número de tarjeta</label>
-              <input type="text" class="form-control" id="numeroTarjeta" maxlength="16"
-                placeholder="Ej: 4545123412341234">
-              <small id="bancoDetectado" class="text-muted"></small>
-            </div>
-            <div class="col-md-4">
-              <label for="vencimiento" class="form-label">Vencimiento</label>
-              <input type="text" class="form-control" id="vencimiento" placeholder="MM/AA">
-            </div>
-            <div class="col-md-4">
-              <label for="cvv" class="form-label">CVV</label>
-              <input type="text" class="form-control" id="cvv" maxlength="4">
-            </div>
-          </div>
-        </div>
-
-        <!-- Campos transferencia -->
-        <div id="pagoTransferencia" class="mt-3" style="display:none;">
-          <label for="numeroCuenta" class="form-label">Número de cuenta</label>
-          <input type="text" class="form-control" id="numeroCuenta">
-        </div>
-      </div>
-    </div>
-
-    <!-- Sección Costos -->
-    <div class="card mb-3">
-      <div class="card-header bg-light">
-        <h5 class="mb-0">Costos</h5>
-      </div>
-      <div class="card-body">
-        <p>Subtotal: <span id="subtotal">0</span> USD</p>
-        <p>Costo de envío: <span id="costoEnvio">0</span> USD</p>
-        <p><strong>Total: <span id="total">0</span> USD</strong></p>
-      </div>
-    </div>
-
-    <!-- Botón Finalizar compra -->
-    <div class="text-center mt-4 mb-5">
-      <button id="finalizarCompraBtn" class="btn btn-success">Finalizar compra</button>
-    </div>
-
-    <!-- Modal de compra exitosa -->
-    <div class="modal fade" id="compraExitosaModal" tabindex="-1" aria-labelledby="compraExitosaLabel"
-      aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content text-center">
-          <div class="modal-header bg-success text-white">
-            <h5 class="modal-title w-100" id="compraExitosaLabel">¡Compra exitosa!</h5>
-          </div>
-          <div class="modal-body">
-            <p>Tu compra ha sido realizada con éxito. 🎉</p>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-success" data-bs-dismiss="modal">Aceptar</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </main>
-
-  <!-- FOOTER -->
-  <footer class="text-muted mt-4">
+  <footer class="text-muted">
     <div class="container">
-      <p class="float-end"><a href="#">Volver arriba</a></p>
-      <p>Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jóvenes a Programar</a>
+      <p class="float-end">
+        <a href="#">Volver arriba</a>
       </p>
+      <p>Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a></p>
     </div>
   </footer>
-
-  <!-- SPINNER -->
   <div id="spinner-wrapper">
     <div class="lds-ring">
       <div></div>
@@ -291,39 +161,10 @@
       <div></div>
     </div>
   </div>
-
-  <!-- JS -->
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/init.js"></script>
   <script src="js/cart.js"></script>
   <script src="js/email_navbar.js"></script>
-
-  <!-- Script de detección de banco -->
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const radiosPago = document.querySelectorAll('input[name="formaPago"]');
-      const numeroTarjetaInput = document.getElementById("numeroTarjeta");
-      const bancoDetectado = document.getElementById("bancoDetectado");
-
-      radiosPago.forEach(radio => {
-        radio.addEventListener("change", () => {
-          document.getElementById("pagoTarjeta").style.display = radio.value === "tarjeta" ? "block" : "none";
-          document.getElementById("pagoTransferencia").style.display = radio.value === "transferencia" ? "block" : "none";
-        });
-      });
-
-      // Detección automática del banco
-      numeroTarjetaInput.addEventListener("input", () => {
-        const num = numeroTarjetaInput.value.trim();
-        let banco = "";
-        if (/^4[5-7]/.test(num)) banco = "BBVA";
-        else if (/^5[1-2]/.test(num)) banco = "Santander";
-        else if (/^60/.test(num)) banco = "Prex";
-        else if (/^5[3-4]/.test(num)) banco = "BROU";
-        bancoDetectado.textContent = banco ? `Entidad detectada: ${banco}` : "";
-      });
-    });
-  </script>
 </body>
 
 </html>
