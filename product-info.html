@@ -35,11 +35,11 @@
           <li class="nav-item">
             <a class="nav-link" href="sell.html">Vender</a>
           </li>
-          
           <li class="nav-item">
             <a class="nav-link" href="cart.html">
               <i class="fa fa-shopping-cart position-relative">
-                <span id="notif-badge" class="position-absolute top-1 start-90 translate-middle badge rounded-pill bg-danger badge-small">
+                <span id="notif-badge"
+                  class="position-absolute top-1 start-90 translate-middle badge rounded-pill bg-danger badge-small">
                   0
                   <span class="visually-hidden">cantidad de productos</span>
                 </span>
@@ -61,50 +61,50 @@
     </div>
   </nav>
 
-  <!-- Contenedor principal con clase para aplicar el modo oscuro -->
-<main class="container my-5 product-info">
-  <div class="row">
-    <!-- Columna del producto principal -->
-    <div class="col-md-8 col-lg-8">
-      <div class="d-flex justify-content-between align-items-center mb-3">
-        <h2 id="nombreProducto" class="mb-0"></h2>
-      </div>
+  <!-- Contenedor principal -->
+  <main class="container my-5 product-info">
+    <div class="row">
+      <!-- Columna del producto principal -->
+      <div class="col-md-8 col-lg-8">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <h2 id="nombreProducto" class="mb-0"></h2>
+        </div>
 
-      <span id="categoriaProducto" class="badge bg-primary mb-3"></span>
+        <span id="categoriaProducto" class="badge bg-primary mb-3"></span>
 
-      <div id="carouselProducto" class="carousel slide mb-4" data-bs-ride="carousel">
-        <div class="carousel-inner" id="imagenesProducto"></div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselProducto" data-bs-slide="prev">
-          <span class="carousel-control-prev-icon"></span>
+        <div id="carouselProducto" class="carousel slide mb-4" data-bs-ride="carousel">
+          <div class="carousel-inner" id="imagenesProducto"></div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselProducto" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselProducto" data-bs-slide="next">
+            <span class="carousel-control-next-icon"></span>
+          </button>
+        </div>
+
+        <p id="descripcionProducto" class="lead"></p>
+        <p class="text-muted"><strong>Precio:</strong> <span id="precioProducto"></span> <span id="monedaProducto"></span></p>
+        <p class="text-muted"><strong>Vendidos:</strong> <span id="vendidosProducto"></span></p>
+
+        <!-- ✅ Botón Comprar -->
+        <button id="btnComprar" class="btn btn-success mt-3">
+          <i class="fa fa-shopping-cart"></i> Comprar
         </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselProducto" data-bs-slide="next">
-          <span class="carousel-control-next-icon"></span>
-        </button>
       </div>
 
-      <p id="descripcionProducto" class="lead"></p>
-      <p class="text-muted"><strong>Precio:</strong> <span id="precioProducto"></span> <span id="monedaProducto"></span></p>
-      <p class="text-muted"><strong>Vendidos:</strong> <span id="vendidosProducto"></span></p>
-
-      <!-- ✅ Botón Comprar dentro de la columna principal -->
-      <button id="btnComprar" class="btn btn-success mt-3">
-        <i class="fa fa-shopping-cart"></i> Comprar
-      </button>
-    </div>
-
-    <!-- Columna de productos relacionados -->
-    <div class="col-md-4 col-lg-4">
-      <h3 id="titulo-productosRelacionados">Productos relacionados</h3>
-      <div id="productosRelacionados" class="d-flex flex-column gap-3">
-        <!-- Aquí se insertan dinámicamente -->
+      <!-- Columna derecha: productos relacionados -->
+      <div class="col-md-4 col-lg-4">
+        <h3 id="titulo-productosRelacionados">Productos relacionados</h3>
+        <div id="productosRelacionados" class="d-flex flex-column gap-3">
+          <!-- Aquí se insertan dinámicamente -->
+        </div>
       </div>
     </div>
-  </div> <!-- 🔹 cierre del .row correcto -->
-</main>
+  </main>
 
   <!-- Sección de Calificaciones -->
   <div class="container mt-4">
-    <h3>Calificaciones</h3>
+    <h3 id="tituloComentarios">Calificaciones</h3>
     <div id="product-comments" class="list-group">
       <!-- Aquí se insertan los comentarios desde JS -->
     </div>
@@ -112,12 +112,11 @@
 
   <!-- Formulario de Nueva Calificación -->
   <div class="container mt-4">
-    <h4>Deja tu calificación</h4>
+    <h4 id="dejaTuCalificacion">Deja tu calificación</h4>
     <form id="rating-form">
       <div class="mb-3">
         <label for="rating-text" class="form-label">Comentario:</label>
-        <textarea id="rating-text" class="form-control" rows="3"
-          placeholder="Escribe tu comentario..."></textarea>
+        <textarea id="rating-text" class="form-control" rows="3" placeholder="Escribe tu comentario..."></textarea>
       </div>
       <div class="mb-3">
         <label class="form-label">Calificación:</label>
@@ -133,16 +132,15 @@
     </form>
   </div>
 
-  <footer class="text-muted">
+  <!-- Footer -->
+  <footer class="text-muted mt-5">
     <div class="container">
-      <p class="float-end">
-        <a href="#">Volver arriba</a>
-      </p>
-      <p>Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a>
-      </p>
+      <p class="float-end"><a href="#">Volver arriba</a></p>
+      <p>Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jóvenes a Programar</a></p>
     </div>
   </footer>
 
+  <!-- Spinner -->
   <div id="spinner-wrapper">
     <div class="lds-ring">
       <div></div>
@@ -152,6 +150,7 @@
     </div>
   </div>
 
+  <!-- Scripts -->
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/init.js"></script>
   <script src="js/email_navbar.js"></script>
