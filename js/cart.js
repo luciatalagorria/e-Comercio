@@ -272,41 +272,99 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // Confirmar compra: validaciones completas
-  btnConfirmarCompra && btnConfirmarCompra.addEventListener("click", () => {
-    const carrito = obtenerCarrito();
-    if (!carrito || carrito.length === 0) return alert("El carrito está vacío.");
+btnConfirmarCompra && btnConfirmarCompra.addEventListener("click", (e) => {
+  const carrito = obtenerCarrito();
+  if (!carrito || carrito.length === 0) {
+    return alert("El carrito está vacío."); // Podemos dejar alerta para el caso de carrito vacío
+  }
 
-    // Validar envío
-    const envioSeleccionado = envioRadios().find(r => r.checked);
-    if (!envioSeleccionado) return alert("Debe seleccionar un tipo de envío.");
+  let formValido = true;
 
-    // Validar dirección
-    if (!departamentoEl?.value || !localidadEl?.value || !calleEl?.value || !numeroEl?.value || !esquinaEl?.value) {
-      return alert("Debe completar todos los datos de la dirección.");
+  // Limpiar mensajes previos
+  envioRadios().forEach(r => r.setCustomValidity(""));
+  pagoRadios().forEach(r => r.setCustomValidity(""));
+  departamentoSelect.setCustomValidity("");
+  ciudadSelect.setCustomValidity("");
+  calleEl.setCustomValidity("");
+  numeroEl.setCustomValidity("");
+  esquinaEl.setCustomValidity("");
+  tarjetaNumEl?.setCustomValidity("");
+  tarjetaNombreEl?.setCustomValidity("");
+  cuentaBancariaEl?.setCustomValidity("");
+
+  // Validar envío
+  const envioSeleccionado = envioRadios().find(r => r.checked);
+  if (!envioSeleccionado) {
+    envioRadios()[0].setCustomValidity("Debe seleccionar un tipo de envío.");
+    formValido = false;
+  }
+
+  // Validar dirección
+  if (!departamentoSelect.value) {
+    departamentoSelect.setCustomValidity("Seleccione un departamento.");
+    formValido = false;
+  }
+  if (!ciudadSelect.value) {
+    ciudadSelect.setCustomValidity("Seleccione una ciudad.");
+    formValido = false;
+  }
+  if (!calleEl.value) {
+    calleEl.setCustomValidity("Ingrese la calle.");
+    formValido = false;
+  }
+  if (!numeroEl.value) {
+    numeroEl.setCustomValidity("Ingrese el número.");
+    formValido = false;
+  }
+  if (!esquinaEl.value) {
+    esquinaEl.setCustomValidity("Ingrese la esquina.");
+    formValido = false;
+  }
+
+  // Validar cantidades
+  for (const p of carrito) {
+    if (!p.quantity || Number(p.quantity) <= 0) {
+      formValido = false;
+      alert("Todas las cantidades deben ser mayores a 0."); // Podemos dejar alert puntual
+      break;
     }
+  }
 
-    // Validar cantidades
-    for (const p of carrito) {
-      if (!p.quantity || Number(p.quantity) <= 0) return alert("Todas las cantidades deben ser mayores a 0.");
+  // Validar forma de pago
+  const pagoSeleccionado = pagoRadios().find(r => r.checked);
+  if (!pagoSeleccionado) {
+    pagoRadios()[0].setCustomValidity("Debe seleccionar una forma de pago.");
+    formValido = false;
+  } else if (pagoSeleccionado.value === "tarjeta") {
+    if (!tarjetaNumEl?.value) {
+      tarjetaNumEl.setCustomValidity("Ingrese el número de tarjeta.");
+      formValido = false;
     }
-
-    // Validar forma de pago
-    const pagoSeleccionado = pagoRadios().find(r => r.checked);
-    if (!pagoSeleccionado) return alert("Debe seleccionar una forma de pago.");
-
-    if (pagoSeleccionado.value === "tarjeta") {
-      if (!tarjetaNumEl?.value || !tarjetaNombreEl?.value) return alert("Complete los datos de la tarjeta.");
-    } else if (pagoSeleccionado.value === "transferencia") {
-      if (!cuentaBancariaEl?.value) return alert("Ingrese el número de cuenta bancaria.");
+    if (!tarjetaNombreEl?.value) {
+      tarjetaNombreEl.setCustomValidity("Ingrese el nombre del titular.");
+      formValido = false;
     }
+  } else if (pagoSeleccionado.value === "transferencia") {
+    if (!cuentaBancariaEl?.value) {
+      cuentaBancariaEl.setCustomValidity("Ingrese el número de cuenta bancaria.");
+      formValido = false;
+    }
+  }
 
-    // Si todo ok, mostrar éxito (ficticio) y vaciar carrito
-    alert("🎉 Compra realizada con éxito (envío ficticio). Gracias por su compra.");
-    localStorage.removeItem("carrito");
-    // cerrar modal y re-render
-    modal && modal.classList.add("d-none");
-    renderCarrito();
-  });
+  // Forzar que el navegador muestre los errores si no es válido
+  if (!formValido) {
+    const firstInvalid = document.querySelector(":invalid");
+    firstInvalid?.reportValidity();
+    return;
+  }
+
+  // Si todo ok, finalizar compra
+  alert("🎉 Compra realizada con éxito. Gracias por su compra.");
+  localStorage.removeItem("carrito");
+  modal && modal.classList.add("d-none");
+  renderCarrito();
+});
+
 
   // Render inicial
   renderCarrito();
