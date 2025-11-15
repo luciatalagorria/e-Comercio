@@ -282,59 +282,146 @@ body.modo-oscuro .btn-success {
   color: white;
 }
 
-body.dark-mode .btn-success:hover,
-body.modo-oscuro .btn-success:hover {
-  background-color: #457bb5;
+    width: 120px; 
 }
 
-/* Botón eliminar */
-body.dark-mode .btn-eliminar,
-body.modo-oscuro .btn-eliminar {
-  color: #ff6666;
-  border-color: #ff6666;
+/* MODAL OVERLAY    */
+
+.compra-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(4px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  z-index: 9999;
 }
 
-body.dark-mode .btn-eliminar:hover,
-body.modo-oscuro .btn-eliminar:hover {
-  background-color: #e60000;
-  color: #fff;
+/* Ocultar clase desde JS */
+.d-none {
+  display: none !important;
 }
 
-/* Cantidad */
-body.dark-mode .cantidad-input-group,
-body.modo-oscuro .cantidad-input-group {
-  background-color: #1c2732;
-  border-color: #2b3a45;
+/* CONTENIDO MODAL  */
+
+.compra-contenido {
+  width: 100%;
+  max-width: 480px;
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 28px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+  animation: aparecer 0.25s ease-out;
 }
 
-body.dark-mode .cantidad-input-group .btn,
-body.modo-oscuro .cantidad-input-group .btn {
-  background-color: #131a22;
-  color: #e6eef6;
+/* Animación de entrada */
+@keyframes aparecer {
+  from {
+    opacity: 0;
+    transform: translateY(-15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-/* Carrito vacío */
-body.dark-mode #carrVacio,
-body.modo-oscuro #carrVacio {
-  background-color: #11201a;
-  border-color: #28a745;
-  color: #c7ffd1;
+/* TITULOS          */
+
+.titulo-seccion {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #222;
 }
 
-/* Banco detectado */
-body.dark-mode #bancoDetectado,
-body.modo-oscuro #bancoDetectado {
-  color: #a6b2c4;
+/* Botones Radio */
+
+.grupo-radio label {
+  display: block;
+  font-size: 15px;
+  margin-bottom: 6px;
+  cursor: pointer;
 }
 
-/* Imágenes */
-body.dark-mode .img-thumbnail,
-body.modo-oscuro .img-thumbnail {
-  filter: brightness(1.1);
-  border-color: #3a4754;
+.grupo-radio input[type="radio"] {
+  margin-right: 6px;
 }
 
-/* Transiciones globales */
-body, .producto-card, .section-box, input, .btn, #total {
-  transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+/* Campos de texto  */
+
+.form-control, .form-select {
+  width: 100%;
+  padding: 10px 12px;
+  font-size: 15px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.form-control:focus,
+.form-select:focus {
+  border-color: #0d6efd;
+  outline: none;
+  box-shadow: 0 0 3px rgba(13, 110, 253, 0.4);
+}
+
+/* Direccion de grid   */
+
+.direccion-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+}
+
+/* Layout responsive */
+@media (min-width: 480px) {
+  .direccion-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .direccion-grid input:nth-child(3),
+  .direccion-grid input:nth-child(4),
+  .direccion-grid input:nth-child(5) {
+    grid-column: span 2;
+  }
+}
+
+/* Campos extra */
+
+.pago-extra {
+  margin-top: 10px;
+}
+
+/* Costos */
+
+#subtotalCompra,
+#costoEnvio,
+#totalFinal {
+  font-weight: 600;
+}
+
+/* Botones modals  */
+
+#btnConfirmarCompra {
+  font-size: 17px;
+  padding: 12px;
+  border-radius: 10px;
+}
+
+#btnCerrarModal {
+  font-size: 16px;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: #6c757d;
+  color: white;
+}
+
+#btnCerrarModal:hover {
+  background-color: #5a6268;
 }

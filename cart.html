@@ -67,7 +67,75 @@
     <!-- Contenedor del carrito -->
     <div id="containerCarrito"></div>
 
-    <!-- Carrito vacío -->
+    <div id="modalCompra" class="compra-modal d-none">
+  <div class="compra-contenido">
+
+    <h2 class="titulo-seccion">Tipo de envío</h2>
+    <div class="grupo-radio">
+      <label><input type="radio" name="envio" value="premium"> Premium — 2 a 5 días (15%)</label>
+      <label><input type="radio" name="envio" value="express"> Express — 5 a 8 días (7%)</label>
+      <label><input type="radio" name="envio" value="standard"> Standard — 12 a 15 días (5%)</label>
+    </div>
+
+    <h2 class="titulo-seccion mt-3">Dirección de envío</h2>
+    <div class="direccion-grid">
+      <select id="departamentoSelect" class="form-select">
+        <option value="">Seleccione un departamento</option>
+        <option value="Montevideo">Montevideo</option>
+        <option value="Canelones">Canelones</option>
+        <option value="Maldonado">Maldonado</option>
+        <option value="RioNegro">Rio Negro</option>
+        <option value="CerroLargo">Cerro Largo</option>
+        <option value="Colonia">Colonia</option>
+        <option value="Durazno">Durazno</option>
+        <option value="Flores">Flores</option>
+        <option value="Florida">Florida</option>
+        <option value="Lavalleja">Lavalleja</option>
+        <option value="Paysandu">Paysandú</option>
+        <option value="Rivera">Rivera</option>
+        <option value="Rocha">Rocha</option>
+        <option value="Salto">Salto</option>
+        <option value="SanJose">San José</option>
+        <option value="Soriano">Soriano</option>
+        <option value="Tacuarembo">Tacuarembó</option>
+        <option value="TreintaYTres">Treinta y Tres</option>
+      </select>
+
+      <select id="ciudadSelect" class="form-select">
+        <option value="">Seleccione una localidad</option>
+      </select>
+
+      <input id="calle" class="form-control" placeholder="Calle">
+      <input id="numero" class="form-control" placeholder="Número">
+      <input id="esquina" class="form-control" placeholder="Esquina">
+    </div>
+
+    <h2 class="titulo-seccion mt-3">Forma de pago</h2>
+    <div class="grupo-radio">
+      <label><input type="radio" name="pago" value="tarjeta"> Tarjeta de crédito</label>
+      <label><input type="radio" name="pago" value="transferencia"> Transferencia bancaria</label>
+    </div>
+
+    <div id="pago-tarjeta" class="pago-extra d-none">
+      <input id="tarjeta-num" class="form-control" placeholder="Número de tarjeta">
+      <input id="tarjeta-nombre" class="form-control" placeholder="Nombre del titular">
+    </div>
+
+    <div id="pago-transferencia" class="pago-extra d-none">
+      <input id="cuenta-bancaria" class="form-control" placeholder="Número de cuenta bancaria">
+    </div>
+
+    <h2 class="titulo-seccion mt-3">Costos</h2>
+    <p>Subtotal: <span id="subtotalCompra"></span></p>
+    <p>Costo envío: <span id="costoEnvio"></span></p>
+    <p><b>Total: <span id="totalFinal"></span></b></p>
+
+    <button id="btnConfirmarCompra" class="btn btn-success w-100 mt-3">Confirmar compra</button>
+    <button id="btnCerrarModal" class="btn btn-secondary w-100 mt-2">Cancelar</button>
+
+  </div>
+</div>
+
     <div id="carrVacio" class="alert alert-info text-center mt-5 d-none">
       <h5>Tu carrito está vacío 🛒</h5>
       <p>Agrega productos desde la sección de <a href="categories.html" class="alert-link">Categorías</a>.</p>
