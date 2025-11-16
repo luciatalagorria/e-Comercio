@@ -147,33 +147,38 @@ body.dark-mode #productosRelacionados .producto {
     }
 }
 
-/* ---- Estilos adicionales de Santiago ---- */
-
-#tituloComentarios {
-    color: #f19305;
-    font-weight: 700;
-    font-size: 30px;
-    margin-bottom: 50px;
+/* TÍTULOS DE SECCIÓN */
+.container h3,
+.container h4 {
+  color: #f19305;     /* naranja */
+  font-weight: 700;
+  margin-bottom: 20px;
 }
 
-#titulo-productosRelacionados {
-    color: #f19305;
-    font-weight: 700;
-    font-size: 30px;
-    margin-bottom: 50px;
+/* FORM LABELS */
+#rating-form .form-label {
+  font-weight: 600;
+  color: #333;
 }
 
-#related-products .producto {
-    color: #5D96CF;
-    text-align: center;
-    background-color: #fff;
-    cursor: pointer;
-    transition: transform 0.2s, box-shadow 0.2s;
+/* BOTÓN "Enviar" */
+#btnEnviarComentario {
+  background-color: #5D96CF;   /* celeste */
+  border-color: #5D96CF;
+  font-weight: 600;
 }
 
-#dejaTuCalificacion {
-    color: #f19305;
-    font-weight: 700;
-    font-size: 24px;
-    margin-bottom: 20px;
+#btnEnviarComentario:hover {
+  background-color: #4a7cb0;
+  border-color: #4a7cb0;
+}
+
+/* ESTRELLAS DE CALIFICACIÓN */
+#rating-stars i {
+  cursor: pointer;
+  transition: color 0.2s, transform 0.1s;
+}
+
+#rating-stars i:hover {
+  transform: scale(1.1);
 }
