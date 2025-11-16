@@ -1,3 +1,7 @@
+h2 {
+  color: #f19305;
+}
+
 /* CONTENEDOR GENERAL */
 #containerCarrito {
   font-family:  Anek Devanagari, sans-serif;
@@ -43,7 +47,7 @@
 .nombre-producto {
     font-size: 1.3rem;
     font-weight: bold;
-    color: #f09200;
+    color: #f19305;
 }
 
 
@@ -81,7 +85,7 @@
 /* Subtotal */
 .subtotal-valor {
     color: #fafafa;
-    background-color: #f09200;
+    background-color: #f19305;
   border: none;
   border-radius: 8px;
   padding: 6px 12px;
@@ -224,9 +228,10 @@
   backdrop-filter: blur(4px);
   display: flex;
   justify-content: center;
-  align-items: center;
-  padding: 20px;
+  align-items: flex-start; /* <--- antes era center */
+  padding: 40px 20px; /* espacio arriba y abajo */
   z-index: 9999;
+  overflow-y: auto; /* <--- permite scroll */
 }
 
 /* Ocultar (clase que agregás desde JS) */
@@ -240,7 +245,7 @@
 
 .compra-contenido {
   width: 100%;
-  max-width: 480px;
+  max-width: 650px;
   background: #ffffff;
   border-radius: 14px;
   padding: 28px;
@@ -268,7 +273,7 @@
   font-size: 20px;
   font-weight: 600;
   margin-bottom: 8px;
-  color: #222;
+  color: #f19305;
 }
 
 /* ──────────────── */
@@ -284,6 +289,7 @@
 
 .grupo-radio input[type="radio"] {
   margin-right: 6px;
+  accent-color: #6d95ba;
 }
 
 /* ──────────────── */
@@ -343,7 +349,7 @@
 #subtotalCompra,
 #costoEnvio,
 #totalFinal {
-  font-weight: 600;
+  font-weight: 700;
 }
 
 /* ──────────────── */
@@ -354,6 +360,7 @@
   font-size: 17px;
   padding: 12px;
   border-radius: 10px;
+  font-weight: bold;
 }
 
 #btnCerrarModal {
@@ -362,6 +369,7 @@
   border-radius: 10px;
   background-color: #6c757d;
   color: white;
+  font-weight: bold;
 }
 
 #btnCerrarModal:hover {
