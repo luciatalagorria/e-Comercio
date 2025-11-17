@@ -12,115 +12,151 @@
   <link href="css/styles.css" rel="stylesheet">
   <link href="css/product-info.css" rel="stylesheet">
   <link href="css/product-info-darkmode.css" rel="stylesheet">
-  <script src="https://kit.fontawesome.com/dd26e005fc.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="ModoOscuro.css">
+
+  <script src="https://kit.fontawesome.com/dd26e005fc.js" crossorigin="anonymous"></script>
   <script src="ModoOscuro.js"></script>
 </head>
 
 <body>
+
+  <!-- NAVBAR -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-1">
     <div class="container">
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+        data-bs-target="#navbarNav" aria-controls="navbarNav"
+        aria-expanded="false" aria-label="Mostrar navegación">
         <span class="navbar-toggler-icon"></span>
       </button>
+
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav w-100 justify-content-between">
+
           <li class="nav-item">
             <a class="nav-link" href="index.html">Inicio</a>
           </li>
+
           <li class="nav-item">
             <a class="nav-link active" href="categories.html">Categorías</a>
           </li>
+
           <li class="nav-item">
             <a class="nav-link" href="sell.html">Vender</a>
           </li>
-          
+
           <li class="nav-item">
-            <a class="nav-link" href="cart.html">
-              <i class="fa fa-shopping-cart position-relative">
-                <span id="notif-badge" class="position-absolute top-1 start-90 translate-middle badge rounded-pill bg-danger badge-small">
+            <a class="nav-link position-relative" href="cart.html">
+              <i class="fa fa-shopping-cart">
+                <span id="notif-badge"
+                  class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger badge-small">
                   0
-                  <span class="visually-hidden">cantidad de productos</span>
                 </span>
               </i>
             </a>
           </li>
+
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown"
-              aria-expanded="false">
+            <a class="nav-link dropdown-toggle" href="#" id="userDropdown"
+              role="button" data-bs-toggle="dropdown" aria-expanded="false">
               <i class="fa fa-user"></i><span id="usuario-nav"></span>
             </a>
+
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
               <div id="MODO-OSCURO"></div>
               <li><a class="dropdown-item" href="login.html">Iniciar sesión</a></li>
             </ul>
           </li>
+
         </ul>
       </div>
+
     </div>
   </nav>
 
-  <!-- Contenedor principal con clase para aplicar el modo oscuro -->
-<main class="container my-5 product-info">
-  <div class="row">
-    <!-- Columna del producto principal -->
-    <div class="col-md-8 col-lg-8">
-      <div class="d-flex justify-content-between align-items-center mb-3">
-        <h2 id="nombreProducto" class="mb-0"></h2>
-      </div>
+  <!-- CONTENIDO PRINCIPAL -->
+  <main class="container my-5 product-info">
 
-      <span id="categoriaProducto" class="badge bg-primary mb-3"></span>
+    <div class="row">
 
-      <div id="carouselProducto" class="carousel slide mb-4" data-bs-ride="carousel">
-        <div class="carousel-inner" id="imagenesProducto"></div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselProducto" data-bs-slide="prev">
-          <span class="carousel-control-prev-icon"></span>
+      <!-- COLUMNA PRINCIPAL DEL PRODUCTO -->
+      <div class="col-md-8 col-lg-8">
+
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <h2 id="nombreProducto" class="mb-0"></h2>
+        </div>
+
+        <span id="categoriaProducto" class="badge bg-primary mb-3"></span>
+
+        <!-- CARRUSEL -->
+        <div id="carouselProducto" class="carousel slide mb-4" data-bs-ride="carousel">
+          <div class="carousel-inner" id="imagenesProducto"></div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselProducto" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselProducto" data-bs-slide="next">
+            <span class="carousel-control-next-icon"></span>
+          </button>
+        </div>
+
+        <p id="descripcionProducto" class="lead"></p>
+
+        <p class="text-muted">
+          <strong>Precio:</strong>
+          <span id="precioProducto"></span>
+          <span id="monedaProducto"></span>
+        </p>
+
+        <p class="text-muted">
+          <strong>Vendidos:</strong>
+          <span id="vendidosProducto"></span>
+        </p>
+
+        <!-- BOTÓN COMPRAR -->
+        <button id="btnComprar" class="btn btn-success mt-3">
+          <i class="fa fa-shopping-cart"></i> Comprar
         </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselProducto" data-bs-slide="next">
-          <span class="carousel-control-next-icon"></span>
-        </button>
+
       </div>
 
-      <p id="descripcionProducto" class="lead"></p>
-      <p class="text-muted"><strong>Precio:</strong> <span id="precioProducto"></span> <span id="monedaProducto"></span></p>
-      <p class="text-muted"><strong>Vendidos:</strong> <span id="vendidosProducto"></span></p>
+      <!-- COLUMNA PRODUCTOS RELACIONADOS -->
+      <div class="col-md-4 col-lg-4">
 
-      <!-- ✅ Botón Comprar dentro de la columna principal -->
-      <button id="btnComprar" class="btn btn-success mt-3">
-        <i class="fa fa-shopping-cart"></i> Comprar
-      </button>
-    </div>
+        <h3 id="titulo-productosRelacionados">Productos relacionados</h3>
 
-    <!-- Columna de productos relacionados -->
-    <div class="col-md-4 col-lg-4">
-      <h3 id="titulo-productosRelacionados">Productos relacionados</h3>
-      <div id="productosRelacionados" class="d-flex flex-column gap-3">
-        <!-- Aquí se insertan dinámicamente -->
+        <div id="productosRelacionados" class="d-flex flex-column gap-3">
+          <!-- contenido dinámico -->
+        </div>
+
       </div>
-    </div>
-  </div> <!-- 🔹 cierre del .row correcto -->
-</main>
 
-  <!-- Sección de Calificaciones -->
+    </div> <!-- /row -->
+
+  </main>
+
+  <!-- SECCIÓN DE CALIFICACIONES -->
   <div class="container mt-4">
     <h3>Calificaciones</h3>
     <div id="product-comments" class="list-group">
-      <!-- Aquí se insertan los comentarios desde JS -->
+      <!-- comentarios dinámicos -->
     </div>
   </div>
 
-  <!-- Formulario de Nueva Calificación -->
+  <!-- NUEVA CALIFICACIÓN -->
   <div class="container mt-4">
     <h4>Deja tu calificación</h4>
+
     <form id="rating-form">
+
       <div class="mb-3">
         <label for="rating-text" class="form-label">Comentario:</label>
         <textarea id="rating-text" class="form-control" rows="3"
           placeholder="Escribe tu comentario..."></textarea>
       </div>
+
       <div class="mb-3">
         <label class="form-label">Calificación:</label>
+
         <div id="rating-stars" class="d-flex gap-1 fs-4 text-warning">
           <i class="fa-regular fa-star" data-value="1"></i>
           <i class="fa-regular fa-star" data-value="2"></i>
@@ -128,35 +164,38 @@
           <i class="fa-regular fa-star" data-value="4"></i>
           <i class="fa-regular fa-star" data-value="5"></i>
         </div>
+
       </div>
+
       <button id="btnEnviarComentario" type="button" class="btn btn-primary">Enviar</button>
+
     </form>
   </div>
 
-  <footer class="text-muted">
+  <!-- FOOTER -->
+  <footer class="text-muted mt-5">
     <div class="container">
-      <p class="float-end">
-        <a href="#">Volver arriba</a>
-      </p>
-      <p>Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a>
+      <p class="float-end"><a href="#">Volver arriba</a></p>
+      <p>
+        Este sitio forma parte de
+        <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jóvenes a Programar</a>
       </p>
     </div>
   </footer>
 
+  <!-- SPINNER -->
   <div id="spinner-wrapper">
     <div class="lds-ring">
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
+      <div></div><div></div><div></div><div></div>
     </div>
   </div>
 
+  <!-- SCRIPTS -->
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/init.js"></script>
   <script src="js/email_navbar.js"></script>
   <script src="js/product-info.js"></script>
   <script src="js/product-info-darkmode.js"></script>
-</body>
 
+</body>
 </html>
