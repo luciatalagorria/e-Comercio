@@ -264,7 +264,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // Confirmar compra (tu versión original con alerts)
+  // Confirmar compra
   btnConfirmarCompra && btnConfirmarCompra.addEventListener("click", () => {
     const carrito = obtenerCarrito();
     if (!carrito || carrito.length === 0) return alert("El carrito está vacío.");
@@ -283,7 +283,7 @@ document.addEventListener("DOMContentLoaded", () => {
       if (!p.quantity || Number(p.quantity) <= 0) return alert("Todas las cantidades deben ser mayores a 0.");
     }
 
-    // Validar forma de pago
+    // Validar pago
     const pagoSeleccionado = pagoRadios().find(r => r.checked);
     if (!pagoSeleccionado) return alert("Debe seleccionar una forma de pago.");
 
@@ -303,8 +303,8 @@ document.addEventListener("DOMContentLoaded", () => {
   renderCarrito();
 });
 
-// ------------------ Ciudades por departamento ------------------
 
+// --- CIUDADES DINÁMICAS ---
 const ciudadesPorDepartamento = {
   Artigas: ["Artigas", "Bella Unión"],
   Canelones: ["Canelones", "Las Piedras", "La Paz", "Ciudad de la Costa", "Pando", "Barros Blancos", "Progreso", "Santa Lucía"],
