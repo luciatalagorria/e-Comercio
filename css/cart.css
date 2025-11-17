@@ -1,179 +1,140 @@
-/* ------------------------------------------------------
-   🎨 MODO OSCURO + DISEÑO CARRITO (Entrega 7)
-   ✅ Versión final corregida y validada
-------------------------------------------------------- */
-
 /* CONTENEDOR GENERAL */
 #containerCarrito {
-  font-family: 'Anek Devanagari', sans-serif;
+  font-family:  Anek Devanagari, sans-serif;
   background-color: #fff;
   border-radius: 12px;
   box-shadow: 0 4px 15px rgba(0,0,0,0.1);
   padding: 25px;
-  transition: background-color 0.4s, color 0.4s;
 }
 
-/* PRODUCTOS EN CARRITO */
 #productos-en-carrito {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Espacio entre las tarjetas de producto */
 }
 
-/* Tarjeta de producto */
 .producto-card {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background-color: #fff;
-  border-radius: 8px;
-  padding: 15px 20px;
-  border: 1px solid #ddd;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-  transition: background-color 0.3s, border-color 0.3s, color 0.3s;
+    display: flex; 
+    align-items: center;
+    justify-content: space-between;
+    background-color: #ffffff; /* Fondo claro para la tarjeta */
+    border-radius: 8px;
+    padding: 15px 20px;
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05); /* Sombra */
 }
+
 
 /* Imagen y nombre */
+
 .producto-info {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  width: 35%;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    width: 35%; 
 }
 
 .card-img-producto {
-  width: 100px;
-  height: auto;
-  border-radius: 4px;
+    width: 100px; 
+    height: auto;
+    border-radius: 4px;
 }
 
 .nombre-producto {
-  font-size: 1.3rem;
-  font-weight: bold;
-  color: #f09200;
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #f09200;
 }
 
-/* Sección de detalles y acciones */
+
+/* Seccion de detalles y acciones */
+
 .producto-detalles {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 65%;
-  gap: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 65%;
+    gap: 10px;
 }
 
 .detalle-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: calc(100% / 3);
-  text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+    width: calc(100% / 3); 
+    text-align: center;
 }
 
 .detalle-etiqueta {
-  font-size: 0.9rem;
-  color: #6c757d;
-  margin-bottom: 5px;
+    font-size: 0.9rem;
+    color: #6c757d; 
+    margin-bottom: 5px;
 }
 
 .detalle-valor {
-  font-weight: 600;
-  color: #5D96CF;
-  font-size: 1.1rem;
-}
-
-/* Secciones (envío, dirección, pago, etc.) */
-.section-box {
-  background-color: #fff;
-  border-radius: 8px;
-  padding: 15px 20px;
-  margin-bottom: 20px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-  transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+    font-weight: 600;
+    color: #5D96CF;
+    font-size: 1.1rem;
 }
 
 /* Subtotal */
 .subtotal-valor {
-  color: #fff;
-  background-color: #f09200;
+    color: #fafafa;
+    background-color: #f09200;
   border: none;
   border-radius: 8px;
   padding: 6px 12px;
   font-weight: bold;
+  transition: 0.2s;
+  gap: 8px;
 }
+
 
 /* Total y Finalizar compra */
 .total-container {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  gap: 15px;
-  margin-top: 30px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 15px;
+    margin-top: 30px;
 }
 
 #total {
-  background-color: #fff;
-  color: #000;
-  font-weight: bold;
-  padding: 12px 24px;
-  border-radius: 8px;
-  text-align: left;
-  line-height: 1;
-  border: 1px solid #ddd;
-  transition: background-color 0.3s, color 0.3s;
+   
+    background-color: #ffffff;
+    color: #000000;
+    font-weight: bold;
+    padding: 12px 24px;
+    border-radius: 8px;
+    margin: 0;
+    text-align: left; 
+    line-height: 1;
 }
 
-/* Botón Finalizar compra */
 .btn-success {
-  font-family: 'Anek Devanagari', sans-serif;
-  background-color: #5D96CF;
-  border: none;
-  color: white;
-  font-weight: 600;
-  transition: background-color 0.3s, transform 0.2s;
+    font-family: anek devanagari, sans-serif;
+    margin-left: 0; 
+    background-color: #5D96CF;
 }
 
-.btn-success:hover {
-  background-color: #457bb5;
-  transform: scale(1.04);
-}
 
-/* CANTIDAD */
-.cantidad-input-group {
-  display: flex;
-  align-items: center;
+/*  CANTIDAD  */
+.input-cantidad {
+  width: 70px;
+  text-align: center;
   border: 1px solid #ccc;
   border-radius: 6px;
-  overflow: hidden;
-  background-color: #fff;
-}
-
-.cantidad-input-group .btn {
-  background-color: #f8f9fa;
-  border: none;
-  padding: 6px 10px;
+  padding: 4px;
   font-weight: bold;
-  color: #333;
-  height: 34px;
 }
 
-.cantidad-input-group .btn:hover {
-  background-color: #e2e6ea;
-}
 
-.input-cantidad {
-  width: 40px;
-  height: 34px;
-  text-align: center;
-  border: none;
-  font-weight: bold;
-  background-color: transparent;
-}
 
-/* BOTÓN ELIMINAR */
+/*  BOTÓN ELIMINAR  */
 .btn-eliminar {
   margin-top: 6px;
-  background-color: transparent;
+  background-color: #ffffff;
   color: #ff4d4d;
   border: 1px solid #ff4d4d;
   border-radius: 6px;
@@ -184,157 +145,225 @@
 
 .btn-eliminar:hover {
   background-color: #e60000;
-  color: #fff;
   transform: scale(1.05);
 }
 
-/* CARRITO VACÍO */
+
+/*  CARRITO VACÍO  */
 #carrVacio {
   border-radius: 10px;
   border: 2px solid #06b93c;
+  border-color: #06b93c;
   background-color: #c0ffd3;
   padding: 20px;
-  color: #000;
-  text-align: center;
 }
 
-/* Logos bancos */
-.img-thumbnail {
-  background: transparent;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  padding: 6px;
-  transition: filter 0.3s, transform 0.3s;
-  object-fit: contain;
+/* GRUPO DE INPUT Y BOTONES */
+.cantidad-input-group {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    overflow: hidden; /* Esto asegura que el borde sea continuo */
 }
 
-.img-thumbnail:hover {
-  transform: scale(1.05);
+.cantidad-input-group .btn {
+    /* Estilos generales para los botones +/- */
+    background-color: #f8f9fa;
+    border: none;
+    padding: 6px 10px;
+    font-weight: bold;
+    color: #333;
+    line-height: 1; /* Para alinear el texto/símbolo */
+    height: 34px; /* Asegurar que la altura coincida con el input */
 }
 
-/* Texto del banco detectado */
-#bancoDetectado {
-  display: block;
-  margin-top: 6px;
+.cantidad-input-group .btn:hover {
+    background-color: #e2e6ea;
+}
+
+.input-cantidad {
+    /* Modificación del input para integrarse al grupo */
+    width: 40px; /* Ancho más ajustado */
+    height: 34px;
+    text-align: center;
+    border: none; /* Eliminar el borde individual */
+    padding: 0;
+    margin: 0;
+    font-weight: bold;
+}
+
+/* Evitar que la flecha del input de tipo number aparezca en algunos navegadores (Opcional) */
+.input-cantidad::-webkit-outer-spin-button,
+.input-cantidad::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+.input-cantidad {
+    -moz-appearance: textfield;
+}
+
+/* El control de cantidad en la tarjeta */
+.detalle-item.cantidad-control {
+
+    width: 120px; 
+
+}
+
+/* ──────────────── */
+/* MODAL OVERLAY    */
+/* ──────────────── */
+
+.compra-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(4px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  z-index: 9999;
+}
+
+/* Ocultar (clase que agregás desde JS) */
+.d-none {
+  display: none !important;
+}
+
+/* ──────────────── */
+/* CONTENIDO MODAL  */
+/* ──────────────── */
+
+.compra-contenido {
+  width: 100%;
+  max-width: 480px;
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 28px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+  animation: aparecer 0.25s ease-out;
+}
+
+/* Animación de entrada */
+@keyframes aparecer {
+  from {
+    opacity: 0;
+    transform: translateY(-15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ──────────────── */
+/* TITULOS          */
+/* ──────────────── */
+
+.titulo-seccion {
+  font-size: 20px;
   font-weight: 600;
-  color: #6c757d;
+  margin-bottom: 8px;
+  color: #222;
 }
 
-/* ----------------------------------------
-   🌙 MODO OSCURO
----------------------------------------- */
-body.dark-mode,
-body.modo-oscuro {
-  background-color: #0e141b;
-  color: #e6eef6;
+/* ──────────────── */
+/* RADIO BUTTONS    */
+/* ──────────────── */
+
+.grupo-radio label {
+  display: block;
+  font-size: 15px;
+  margin-bottom: 6px;
+  cursor: pointer;
 }
 
-/* Contenedor general */
-body.dark-mode #containerCarrito,
-body.modo-oscuro #containerCarrito {
-  background-color: #1a222b;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.6);
-  color: #e6eef6;
+.grupo-radio input[type="radio"] {
+  margin-right: 6px;
 }
 
-/* Secciones */
-body.dark-mode .section-box,
-body.modo-oscuro .section-box {
-  background-color: #1c2732;
-  border: 1px solid #2e3a46;
-  color: #e6eef6;
+/* ──────────────── */
+/* CAMPOS DE TEXTO  */
+/* ─────────────── */
+.form-control, .form-select {
+  width: 100%;
+  padding: 10px 12px;
+  font-size: 15px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  margin-bottom: 10px;
 }
 
-/* Tarjetas */
-body.dark-mode .producto-card,
-body.modo-oscuro .producto-card {
-  background-color: #1c2732;
-  border-color: #2e3a46;
-  color: #e6eef6;
-}
-
-/* Total */
-body.dark-mode #total,
-body.modo-oscuro #total {
-  background-color: #131a22;
-  color: #ffffff;
-  border: 1px solid #2b3a45;
-}
-
-/* Inputs */
-body.dark-mode input,
-body.modo-oscuro input {
-  background-color: #0f1922;
-  color: #fff;
-  border: 1px solid #2b3a45;
-}
-
-body.dark-mode input:focus,
-body.modo-oscuro input:focus {
-  border-color: #5D96CF;
+.form-control:focus,
+.form-select:focus {
+  border-color: #0d6efd;
   outline: none;
+  box-shadow: 0 0 3px rgba(13, 110, 253, 0.4);
 }
 
-/* Botones */
-body.dark-mode .btn-success,
-body.modo-oscuro .btn-success {
-  background-color: #5D96CF;
+/* ──────────────── */
+/* GRID DIRECCIÓN   */
+/* ──────────────── */
+
+.direccion-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+}
+
+/* Layout responsive */
+@media (min-width: 480px) {
+  .direccion-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .direccion-grid input:nth-child(3),
+  .direccion-grid input:nth-child(4),
+  .direccion-grid input:nth-child(5) {
+    grid-column: span 2;
+  }
+}
+
+/* ──────────────── */
+/* CAMPOS EXTRA     */
+/* ─────────────── */
+
+.pago-extra {
+  margin-top: 10px;
+}
+
+/* ──────────────── */
+/* COSTOS           */
+/* ─────────────── */
+
+#subtotalCompra,
+#costoEnvio,
+#totalFinal {
+  font-weight: 600;
+}
+
+/* ──────────────── */
+/* BOTONES MODAL    */
+/* ─────────────── */
+
+#btnConfirmarCompra {
+  font-size: 17px;
+  padding: 12px;
+  border-radius: 10px;
+}
+
+#btnCerrarModal {
+  font-size: 16px;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: #6c757d;
   color: white;
 }
 
-body.dark-mode .btn-success:hover,
-body.modo-oscuro .btn-success:hover {
-  background-color: #457bb5;
-}
-
-/* Botón eliminar */
-body.dark-mode .btn-eliminar,
-body.modo-oscuro .btn-eliminar {
-  color: #ff6666;
-  border-color: #ff6666;
-}
-
-body.dark-mode .btn-eliminar:hover,
-body.modo-oscuro .btn-eliminar:hover {
-  background-color: #e60000;
-  color: #fff;
-}
-
-/* Cantidad */
-body.dark-mode .cantidad-input-group,
-body.modo-oscuro .cantidad-input-group {
-  background-color: #1c2732;
-  border-color: #2b3a45;
-}
-
-body.dark-mode .cantidad-input-group .btn,
-body.modo-oscuro .cantidad-input-group .btn {
-  background-color: #131a22;
-  color: #e6eef6;
-}
-
-/* Carrito vacío */
-body.dark-mode #carrVacio,
-body.modo-oscuro #carrVacio {
-  background-color: #11201a;
-  border-color: #28a745;
-  color: #c7ffd1;
-}
-
-/* Banco detectado */
-body.dark-mode #bancoDetectado,
-body.modo-oscuro #bancoDetectado {
-  color: #a6b2c4;
-}
-
-/* Imágenes */
-body.dark-mode .img-thumbnail,
-body.modo-oscuro .img-thumbnail {
-  filter: brightness(1.1);
-  border-color: #3a4754;
-}
-
-/* Transiciones globales */
-body, .producto-card, .section-box, input, .btn, #total {
-  transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+#btnCerrarModal:hover {
+  background-color: #5a6268;
 }
