@@ -5,16 +5,16 @@ document.addEventListener("DOMContentLoaded", () => {
   const tituloCarrito = document.getElementById("tituloCarrito");
   const notifBadge = document.getElementById("notif-badge");
 
-  // Modal y controles relacionados
+  // Modal y controles relacionados (deben existir en el HTML como te pasé antes)
   const modal = document.getElementById("modalCompra");
-  const btnAbrirModal = document.getElementById("btnFinalizarCompra");
+  const btnAbrirModal = document.getElementById("btnFinalizarCompra"); // debe existir en el HTML
   const btnCerrarModal = document.getElementById("btnCerrarModal");
   const btnConfirmarCompra = document.getElementById("btnConfirmarCompra");
   const subtotalCompraEl = document.getElementById("subtotalCompra");
   const costoEnvioEl = document.getElementById("costoEnvio");
   const totalFinalEl = document.getElementById("totalFinal");
 
-  // Campos del formulario del modal
+  // Form fields (modal)
   const envioRadios = () => Array.from(document.querySelectorAll("input[name='envio']"));
   const pagoRadios = () => Array.from(document.querySelectorAll("input[name='pago']"));
   const departamentoEl = document.getElementById("departamento");
@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }).format(n);
   };
 
-  // tasa USD->UYU
+  // tasa USD->UYU (si haces uso)
   const tasaUSDaUYU = 40;
 
   // Cargar carrito desde localStorage
@@ -57,14 +57,14 @@ document.addEventListener("DOMContentLoaded", () => {
     actualizarNotifBadge(carrito);
   }
 
-  // Actualizar badge
+  // Actualizar notificación (badge)
   function actualizarNotifBadge(carrito) {
     if (!notifBadge) return;
     const totalCant = carrito.reduce((acc, p) => acc + (Number(p.quantity) || 0), 0);
     notifBadge.textContent = totalCant;
   }
 
-  // Calcular total numérico
+  // Calcular total en UYU (devuelve número)
   function calcularTotalNumerico(carrito) {
     return carrito.reduce((acc, prod) => {
       const price = Number(prod.price) || 0;
@@ -74,15 +74,16 @@ document.addEventListener("DOMContentLoaded", () => {
     }, 0);
   }
 
-  // Calcular total formateado
+  // Calcular total y devolver texto formateado
   function calcularTotalFormat(carrito) {
     return formatUYU(calcularTotalNumerico(carrito));
   }
 
-  // Render carrito
+  // Render del carrito en pantalla
   function renderCarrito() {
     const carrito = obtenerCarrito();
 
+    // casos vacíos
     if (!carrito || carrito.length === 0) {
       tituloCarrito.classList.add("d-none");
       carrVacio.classList.remove("d-none");
@@ -95,6 +96,7 @@ document.addEventListener("DOMContentLoaded", () => {
     carrVacio.classList.add("d-none");
     containerCarrito.classList.remove("d-none");
 
+    // construir html
     let html = `<div id="productos-en-carrito">`;
     carrito.forEach((prod, i) => {
       const price = Number(prod.price) || 0;
@@ -143,14 +145,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
     containerCarrito.innerHTML = html;
 
+    // después de insertar HTML, enlazo listeners
     enlazarControles();
     actualizarNotifBadge(carrito);
   }
 
-  // Enlazar botones y cantidad
+  // Enlaza listeners para botones +/- , eliminar y abrir modal (en la vista render)
   function enlazarControles() {
     const carrito = obtenerCarrito();
 
+    // cantidad inputs
     document.querySelectorAll(".producto-card").forEach(fila => {
       const index = Number(fila.dataset.index);
       const inputCantidad = fila.querySelector(".input-cantidad");
@@ -167,6 +171,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         carrito[index].quantity = val;
         guardarCarrito(carrito);
+        // actualizar subtotal y total en DOM
         actualizarFilaDOM(fila, carrito[index]);
       });
 
@@ -188,13 +193,16 @@ document.addEventListener("DOMContentLoaded", () => {
         actualizarFilaDOM(fila, carrito[index]);
       });
 
+      // eliminar producto
       btnEliminar && btnEliminar.addEventListener("click", () => {
         carrito.splice(index, 1);
         guardarCarrito(carrito);
+        // re-render completo
         renderCarrito();
       });
     });
 
+    // Listener para abrir modal (botón Finalizar compra que acabamos de inyectar)
     const btnAbrir = document.getElementById("btnFinalizarCompra");
     if (btnAbrir) {
       btnAbrir.addEventListener("click", () => {
@@ -203,28 +211,30 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  // Actualización DOM subtotal y total
+  // Actualiza subtotal de una fila y total general
   function actualizarFilaDOM(fila, producto) {
     const price = Number(producto.price) || 0;
     const qty = Number(producto.quantity) || 0;
     const subtotalNum = producto.currency === "USD" ? price * qty * tasaUSDaUYU : price * qty;
     fila.querySelector(".subtotal").textContent = `UYU ${formatUYU(subtotalNum)}`;
-
+    // actualizar total general
     const carrito = obtenerCarrito();
     document.getElementById("total").textContent = `TOTAL: ${calcularTotalFormat(carrito)} UYU`;
   }
 
-  // Abrir modal
+  // Modal: abrir, cerrar, actualizar montos
   function abrirModalCompra() {
     const carrito = obtenerCarrito();
     if (carrito.length === 0) {
       return alert("El carrito está vacío.");
     }
-
+    // actualizar subtotales en modal
     subtotalCompraEl.textContent = `${calcularTotalFormat(carrito)} UYU`;
+    // limpiar costo envio por defecto
     costoEnvioEl.textContent = formatUYU(0);
     totalFinalEl.textContent = subtotalCompraEl.textContent;
 
+    // mostrar modal
     modal && modal.classList.remove("d-none");
   }
 
@@ -232,7 +242,7 @@ document.addEventListener("DOMContentLoaded", () => {
     modal && modal.classList.add("d-none");
   });
 
-  // Tipo de envío
+  // Escuchar cambio en radios de envío para calcular costo de envío (ejemplo porcentual como en prototipo)
   envioRadios().forEach(r => {
     r.addEventListener("change", calcularCostoEnvioModal);
   });
@@ -242,72 +252,126 @@ document.addEventListener("DOMContentLoaded", () => {
     const subtotalNum = calcularTotalNumerico(carrito);
     const seleccionado = envioRadios().find(r => r.checked);
     let costo = 0;
-
     if (seleccionado) {
       if (seleccionado.value === "premium") costo = subtotalNum * 0.15;
       if (seleccionado.value === "express") costo = subtotalNum * 0.07;
       if (seleccionado.value === "standard") costo = subtotalNum * 0.05;
     }
-
     costoEnvioEl.textContent = `${formatUYU(costo)} UYU`;
     totalFinalEl.textContent = `${formatUYU(subtotalNum + costo)} UYU`;
   }
 
-  // Forma de pago
+  // Cambios en forma de pago para mostrar inputs como en modal
   pagoRadios().forEach(p => {
     p.addEventListener("change", () => {
       document.getElementById("pago-tarjeta")?.classList.add("d-none");
       document.getElementById("pago-transferencia")?.classList.add("d-none");
-
       if (p.value === "tarjeta") document.getElementById("pago-tarjeta")?.classList.remove("d-none");
       if (p.value === "transferencia") document.getElementById("pago-transferencia")?.classList.remove("d-none");
     });
   });
 
-  // Confirmar compra
-  btnConfirmarCompra && btnConfirmarCompra.addEventListener("click", () => {
-    const carrito = obtenerCarrito();
-    if (!carrito || carrito.length === 0) return alert("El carrito está vacío.");
+  // Confirmar compra: validaciones completas
+btnConfirmarCompra && btnConfirmarCompra.addEventListener("click", (e) => {
+  const carrito = obtenerCarrito();
+  if (!carrito || carrito.length === 0) {
+    return alert("El carrito está vacío."); // Podemos dejar alerta para el caso de carrito vacío
+  }
 
-    // Validar envío
-    const envioSeleccionado = envioRadios().find(r => r.checked);
-    if (!envioSeleccionado) return alert("Debe seleccionar un tipo de envío.");
+  let formValido = true;
 
-    // Validar dirección
-    if (!departamentoEl?.value || !localidadEl?.value || !calleEl?.value || !numeroEl?.value || !esquinaEl?.value) {
-      return alert("Debe completar todos los datos de la dirección.");
+  // Limpiar mensajes previos
+  envioRadios().forEach(r => r.setCustomValidity(""));
+  pagoRadios().forEach(r => r.setCustomValidity(""));
+  departamentoSelect.setCustomValidity("");
+  ciudadSelect.setCustomValidity("");
+  calleEl.setCustomValidity("");
+  numeroEl.setCustomValidity("");
+  esquinaEl.setCustomValidity("");
+  tarjetaNumEl?.setCustomValidity("");
+  tarjetaNombreEl?.setCustomValidity("");
+  cuentaBancariaEl?.setCustomValidity("");
+
+  // Validar envío
+  const envioSeleccionado = envioRadios().find(r => r.checked);
+  if (!envioSeleccionado) {
+    envioRadios()[0].setCustomValidity("Debe seleccionar un tipo de envío.");
+    formValido = false;
+  }
+
+  // Validar dirección
+  if (!departamentoSelect.value) {
+    departamentoSelect.setCustomValidity("Seleccione un departamento.");
+    formValido = false;
+  }
+  if (!ciudadSelect.value) {
+    ciudadSelect.setCustomValidity("Seleccione una ciudad.");
+    formValido = false;
+  }
+  if (!calleEl.value) {
+    calleEl.setCustomValidity("Ingrese la calle.");
+    formValido = false;
+  }
+  if (!numeroEl.value) {
+    numeroEl.setCustomValidity("Ingrese el número.");
+    formValido = false;
+  }
+  if (!esquinaEl.value) {
+    esquinaEl.setCustomValidity("Ingrese la esquina.");
+    formValido = false;
+  }
+
+  // Validar cantidades
+  for (const p of carrito) {
+    if (!p.quantity || Number(p.quantity) <= 0) {
+      formValido = false;
+      alert("Todas las cantidades deben ser mayores a 0."); // Podemos dejar alert puntual
+      break;
     }
+  }
 
-    // Validar cantidades
-    for (const p of carrito) {
-      if (!p.quantity || Number(p.quantity) <= 0) return alert("Todas las cantidades deben ser mayores a 0.");
+  // Validar forma de pago
+  const pagoSeleccionado = pagoRadios().find(r => r.checked);
+  if (!pagoSeleccionado) {
+    pagoRadios()[0].setCustomValidity("Debe seleccionar una forma de pago.");
+    formValido = false;
+  } else if (pagoSeleccionado.value === "tarjeta") {
+    if (!tarjetaNumEl?.value) {
+      tarjetaNumEl.setCustomValidity("Ingrese el número de tarjeta.");
+      formValido = false;
     }
-
-    // Validar pago
-    const pagoSeleccionado = pagoRadios().find(r => r.checked);
-    if (!pagoSeleccionado) return alert("Debe seleccionar una forma de pago.");
-
-    if (pagoSeleccionado.value === "tarjeta") {
-      if (!tarjetaNumEl?.value || !tarjetaNombreEl?.value) return alert("Complete los datos de la tarjeta.");
-    } else if (pagoSeleccionado.value === "transferencia") {
-      if (!cuentaBancariaEl?.value) return alert("Ingrese el número de cuenta bancaria.");
+    if (!tarjetaNombreEl?.value) {
+      tarjetaNombreEl.setCustomValidity("Ingrese el nombre del titular.");
+      formValido = false;
     }
+  } else if (pagoSeleccionado.value === "transferencia") {
+    if (!cuentaBancariaEl?.value) {
+      cuentaBancariaEl.setCustomValidity("Ingrese el número de cuenta bancaria.");
+      formValido = false;
+    }
+  }
 
-    alert("🎉 Compra realizada con éxito. Gracias por su compra.");
-    localStorage.removeItem("carrito");
-    modal && modal.classList.add("d-none");
-    renderCarrito();
-  });
+  // Forzar que el navegador muestre los errores si no es válido
+  if (!formValido) {
+    const firstInvalid = document.querySelector(":invalid");
+    firstInvalid?.reportValidity();
+    return;
+  }
 
-  // Render inicial
+  // Si todo ok, finalizar compra
+  alert("🎉 Compra realizada con éxito. Gracias por su compra.");
+  localStorage.removeItem("carrito");
+  modal && modal.classList.add("d-none");
   renderCarrito();
 });
 
 
-// --- CIUDADES DINÁMICAS ---
+  // Render inicial
+  renderCarrito();
+});
 const ciudadesPorDepartamento = {
-  Artigas: ["Artigas", "Bella Unión"],
-  Canelones: ["Canelones", "Las Piedras", "La Paz", "Ciudad de la Costa", "Pando", "Barros Blancos", "Progreso", "Santa Lucía"],
+  Artigas: ["Artigas", "Bella Unión",],
+  Canelones: ["Canelones", "Las Piedras", "La Paz", "Ciudad de la Costa", "Pando", "Barros Blancos", "Progreso", "Santa Lucía",],
   CerroLargo: ["Melo", "Rio Branco"],
   Colonia: ["Colonia del Sacramento", "Carmelo", "Nueva Helvecia"],
   Durazno: ["Durazno", "Sarandí del Yí"],
@@ -333,10 +397,12 @@ const ciudadSelect = document.getElementById("ciudadSelect");
 departamentoSelect.addEventListener("change", () => {
   const depto = departamentoSelect.value;
 
+  // Limpiar ciudades actuales
   ciudadSelect.innerHTML = "<option value=''>Seleccione una ciudad</option>";
 
   if (!depto || !ciudadesPorDepartamento[depto]) return;
 
+  // Agregar ciudades del departamento elegido
   ciudadesPorDepartamento[depto].forEach(ciudad => {
     const option = document.createElement("option");
     option.value = ciudad;

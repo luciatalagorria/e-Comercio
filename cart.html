@@ -2,170 +2,82 @@
 <html lang="es">
 
 <head>
-  <meta charset="UTF-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>eMercado - Todo lo que busques está aquí</title>
-
   <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/font-awesome.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
   <link rel="stylesheet" href="ModoOscuro.css">
   <link rel="stylesheet" href="css/cart.css">
-
   <script src="ModoOscuro.js"></script>
 </head>
 
 <body>
 
-  <!-- NAVBAR -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-1">
     <div class="container">
-      <a class="navbar-brand" href="index.html">eMercado</a>
-
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-        data-bs-target="#navbarNav" aria-controls="navbarNav"
-        aria-expanded="false" aria-label="Mostrar navegación">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav w-100 justify-content-between">
-
           <li class="nav-item">
             <a class="nav-link" href="index.html">Inicio</a>
           </li>
-
           <li class="nav-item">
-            <a class="nav-link active" href="categories.html">Categorías</a>
-          </li>
 
+
+            <a class="nav-link active" href="categories.html">Categorías</a>
+
+          </li>
           <li class="nav-item">
             <a class="nav-link" href="sell.html">Vender</a>
           </li>
-
           <li class="nav-item">
-            <a class="nav-link position-relative" href="cart.html">
-              <i class="fa fa-shopping-cart">
-                <span id="notif-badge"
-                  class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger badge-small">
+            <a class="nav-link" href="cart.html">
+              <i class="fa fa-shopping-cart position-relative">
+                <span id="notif-badge" class="position-absolute top-1 start-90 translate-middle badge rounded-pill bg-danger badge-small">
                   0
+                  <span class="visually-hidden">cantidad de productos</span>
                 </span>
               </i>
             </a>
           </li>
-
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="userDropdown"
-              role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              <i class="fa fa-user"></i>
-              <span id="usuario-nav"></span>
+            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="fa fa-user"></i><span id="usuario-nav"></span>
             </a>
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
               <div id="MODO-OSCURO"></div>
-              <li>
-                <a class="dropdown-item" href="login.html">Iniciar sesión</a>
-              </li>
+              <li><a class="dropdown-item" href="login.html">Iniciar sesión</a></li>
             </ul>
-          </li>
 
+          </li>
         </ul>
       </div>
     </div>
   </nav>
 
-  <!-- CONTENIDO PRINCIPAL -->
-  <main>
+<main>
     <div class="container my-5">
+    <h2 id="tituloCarrito" class="text-center fw-bold text-warning mb-4">Carrito de Compras</h2>
 
-      <h2 id="tituloCarrito" class="text-center fw-bold text-warning mb-4">
-        Carrito de Compras
-      </h2>
+    <div id="containerCarrito"></div>
 
-      <div id="containerCarrito"></div>
+    <!-- MODAL PARA FINALIZAR COMPRA -->
+<div id="modalCompra" class="compra-modal d-none">
+  <div class="compra-contenido">
 
-      <!-- MODAL FINALIZAR COMPRA -->
-      <div id="modalCompra" class="compra-modal d-none">
-        <div class="compra-contenido">
-
-          <h2 class="titulo-seccion">Tipo de envío</h2>
-          <div class="grupo-radio">
-            <label><input type="radio" name="envio" value="premium"> Premium — 2 a 5 días (15%)</label>
-            <label><input type="radio" name="envio" value="express"> Express — 5 a 8 días (7%)</label>
-            <label><input type="radio" name="envio" value="standard"> Standard — 12 a 15 días (5%)</label>
-          </div>
-
-          <h2 class="titulo-seccion mt-3">Dirección de envío</h2>
-
-          <div class="direccion-grid">
-            <select id="departamentoSelect" class="form-select">
-              <option value="">Seleccione un departamento</option>
-              <option value="Montevideo">Montevideo</option>
-              <option value="Canelones">Canelones</option>
-              <option value="Maldonado">Maldonado</option>
-              <option value="Rio Negro">Rio Negro</option>
-              <option value="Cerro Largo">Cerro Largo</option>
-              <option value="Colonia">Colonia</option>
-              <option value="Durazno">Durazno</option>
-              <option value="Flores">Flores</option>
-              <option value="Florida">Florida</option>
-              <option value="Lavalleja">Lavalleja</option>
-              <option value="Paysandú">Paysandú</option>
-              <option value="Rivera">Rivera</option>
-              <option value="Rocha">Rocha</option>
-              <option value="Salto">Salto</option>
-              <option value="San José">San José</option>
-              <option value="Soriano">Soriano</option>
-              <option value="Tacuarembó">Tacuarembó</option>
-              <option value="Treinta y Tres">Treinta y Tres</option>
-            </select>
-
-            <select id="ciudadSelect" class="form-select">
-              <option value="">Seleccione una localidad</option>
-            </select>
-
-            <input id="calle" class="form-control" placeholder="Calle">
-            <input id="numero" class="form-control" placeholder="Número">
-            <input id="esquina" class="form-control" placeholder="Esquina">
-          </div>
-
-          <h2 class="titulo-seccion mt-3">Forma de pago</h2>
-          <div class="grupo-radio">
-            <label><input type="radio" name="pago" value="tarjeta"> Tarjeta de crédito</label>
-            <label><input type="radio" name="pago" value="transferencia"> Transferencia bancaria</label>
-          </div>
-
-          <div id="pago-tarjeta" class="pago-extra d-none">
-            <input id="tarjeta-num" class="form-control" placeholder="Número de tarjeta">
-            <input id="tarjeta-nombre" class="form-control" placeholder="Nombre del titular">
-          </div>
-
-          <div id="pago-transferencia" class="pago-extra d-none">
-            <input id="cuenta-bancaria" class="form-control" placeholder="Número de cuenta bancaria">
-          </div>
-
-          <h2 class="titulo-seccion mt-3">Costos</h2>
-          <p>Subtotal: <span id="subtotalCompra"></span></p>
-          <p>Costo envío: <span id="costoEnvio"></span></p>
-          <p><b>Total: <span id="totalFinal"></span></b></p>
-
-          <button id="btnConfirmarCompra" class="btn btn-success w-100 mt-3">Confirmar compra</button>
-          <button id="btnCerrarModal" class="btn btn-secondary w-100 mt-2">Cancelar</button>
-
-        </div>
-      </div>
-
-      <div id="carrVacio" class="alert alert-info text-center mt-5 d-none">
-        <h5>Tu carrito está vacío 🛒</h5>
-        <p>Agrega productos desde <a href="categories.html" class="alert-link">Categorías</a>.</p>
-      </div>
-
+    <h2 class="titulo-seccion">Tipo de envío</h2>
+    <div class="grupo-radio">
+      <label><input type="radio" name="envio" value="premium"> Premium — 2 a 5 días (15%)</label>
+      <label><input type="radio" name="envio" value="express"> Express — 5 a 8 días (7%)</label>
+      <label><input type="radio" name="envio" value="standard"> Standard — 12 a 15 días (5%)</label>
     </div>
-  </main>
 
-<<<<<<< HEAD
-  <!-- FOOTER -->
-=======
      <h2 class="titulo-seccion mt-3">Dirección de envío</h2>
     <div class="direccion-grid">
       <select id="departamentoSelect" class="form-select">
@@ -233,28 +145,26 @@
 </main>
 
 
->>>>>>> 548d0ac7ec9049dcd0de8d87dc0d04d4296a3e2f
   <footer class="text-muted">
     <div class="container">
-      <p class="float-end"><a href="#">Volver arriba</a></p>
-      <p>Este sitio forma parte de
-        <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jóvenes a Programar</a>
+      <p class="float-end">
+        <a href="#">Volver arriba</a>
       </p>
+      <p>Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a></p>
     </div>
   </footer>
-
-  <!-- LOADING SPINNER -->
   <div id="spinner-wrapper">
     <div class="lds-ring">
-      <div></div><div></div><div></div><div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
     </div>
   </div>
-
-  <!-- JS -->
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/init.js"></script>
   <script src="js/cart.js"></script>
   <script src="js/email_navbar.js"></script>
-
 </body>
+
 </html>
