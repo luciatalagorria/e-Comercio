@@ -17,7 +17,7 @@ const contenedorComentarios = document.getElementById("product-comments");
 
 // Función principal para cargar producto
 function cargarProducto(id, cat) {
-  const apiUrl = `https://japceibal.github.io/emercado-api/cats_products/${cat}.json`;
+  const apiUrl = `http://localhost:3000/cats_products/${cat}.json`;
 
   fetch(apiUrl)
     .then(res => {
@@ -167,7 +167,7 @@ function cargarComentarios(id) {
   contenedorComentarios.innerHTML = ""; 
 
   // 1️⃣ Cargar comentarios desde la API
-  fetch(`https://japceibal.github.io/emercado-api/products_comments/${id}.json`)
+  fetch(`http://localhost:3000/products_comments/${id}.json`)
     .then(res => res.json())
     .then(apiComments => {
 
