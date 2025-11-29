@@ -11,16 +11,31 @@ document.addEventListener("DOMContentLoaded", () => { //evento que se dispara cu
       return;
     }
 
-    // Autenticación ficticia 
-    localStorage.setItem("usuario", email.value);
+    try {
+      const respuesta = await fetch("http://localhost:3000/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email: email.value,
+          password: password.value,
+        }),
+      });
 
-    // Redirige a la portada
-    window.location.href = "index.html";
+      const data = await respuesta.json();
+
+      if (!respuesta.ok) {
+        alert(data.error); // mensaje del backend
+        return;
+      }
+
+      // Guardar token
+      localStorage.setItem("token", data.token);
+      localStorage.setItem("usuario", email.value);
+
+      window.location.href = "index.html";
+    } catch (error) {
+      console.error("Error al conectar con el backend:", error);
+      alert("Error al iniciar sesión.");
+    }
   });
-
-  
 });
-
-
-
-

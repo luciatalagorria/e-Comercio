@@ -20,20 +20,29 @@ let hideSpinner = function(){
 
 let getJSONData = function(url){
     let result = {};
+
+    // Agregamos el token guardado en localStorage
+    const token = localStorage.getItem("token");
+
+    let options = {
+        headers: {
+            "Authorization": `Bearer ${token}`
+        }
+    };
     showSpinner();
-    return fetch(url)
+ return fetch(url, options)
     .then(response => {
-      if (response.ok) {
-        return response.json();
-      }else{
-        throw Error(response.statusText);
-      }
+        if (response.ok) {
+            return response.json();
+        } else {
+            throw Error(response.statusText);
+        }
     })
     .then(function(response) {
-          result.status = 'ok';
-          result.data = response;
-          hideSpinner();
-          return result;
+        result.status = 'ok';
+        result.data = response;
+        hideSpinner();
+        return result;
     })
     .catch(function(error) {
         result.status = 'error';
