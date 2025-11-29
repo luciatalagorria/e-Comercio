@@ -4,7 +4,7 @@
     const contenedor = document.getElementById("productos");
 
 
-  fetch(`https://japceibal.github.io/emercado-api/cats_products/${categoria}.json`)
+  fetch(`http://localhost:3000/cats_products/${categoria}.json`)
     .then(response => response.json())
     .then(data => {
       data.products.forEach(product => {
@@ -39,7 +39,7 @@ let productosOriginales = []; // los que vienen de la API
 let productosMostrados = [];
 
 // Cargar productos desde la API
-fetch(`https://japceibal.github.io/emercado-api/cats_products/${categoria}.json`)
+fetch(`http://localhost:3000/cats_products/${categoria}.json`)
   .then(response => response.json())
   .then(data => {
     productosOriginales = data.products;

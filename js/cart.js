@@ -17,8 +17,8 @@ document.addEventListener("DOMContentLoaded", () => {
   // Form fields (modal)
   const envioRadios = () => Array.from(document.querySelectorAll("input[name='envio']"));
   const pagoRadios = () => Array.from(document.querySelectorAll("input[name='pago']"));
-  const departamentoEl = document.getElementById("departamento");
-  const localidadEl = document.getElementById("localidad");
+  const departamentoEl = document.getElementById("departamentoSelect");
+  const localidadEl = document.getElementById("ciudadSelect");
   const calleEl = document.getElementById("calle");
   const numeroEl = document.getElementById("numero");
   const esquinaEl = document.getElementById("esquina");
@@ -358,11 +358,59 @@ btnConfirmarCompra && btnConfirmarCompra.addEventListener("click", (e) => {
     return;
   }
 
-  // Si todo ok, finalizar compra
+  /* Si todo ok, finalizar compra
   alert("🎉 Compra realizada con éxito. Gracias por su compra.");
   localStorage.removeItem("carrito");
   modal && modal.classList.add("d-none");
-  renderCarrito();
+  renderCarrito();*/
+
+  // Si todo OK, enviar carrito al backend
+async function guardarCompraEnBackend() {
+  const carrito = obtenerCarrito();
+  const token = localStorage.getItem("token");
+
+  const body = {
+    usuario_id: 1, // o el ID real del usuario
+    items: carrito.map(item => ({
+      producto_id: item.id,
+      cantidad: item.quantity,
+      costo: item.price,
+      moneda: item.currency
+    }))
+  };
+
+  try {
+    const response = await fetch("http://localhost:3000/cart", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`
+      },
+      body: JSON.stringify(body)
+    });
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      console.error("Error:", data);
+      return alert("Hubo un error al procesar la compra.");
+    }
+
+    alert("🎉 Compra registrada correctamente.");
+
+    // Limpiar carrito
+    localStorage.removeItem("carrito");
+    modal && modal.classList.add("d-none");
+    renderCarrito();
+
+  } catch (err) {
+    console.error("Error conexión:", err);
+    alert("No se pudo conectar al servidor.");
+  }
+}
+
+guardarCompraEnBackend();
+
 });
 
 
